@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LUXOR.VIP | Luxury Tourism, Private Trips, Flats & VIP Transport</title>
+    <meta name="description" content="The premier luxury travel concierge in Luxor, Egypt. Curated private temple tours, sunrise hot air balloons, exclusive Nile-view flats & villas, and executive private transport." />
+    <meta property="og:title" content="LUXOR.VIP | Luxury Tourism, Private Trips, Flats & VIP Transport" />
+    <meta property="og:description" content="The premier luxury travel concierge in Luxor, Egypt. Curated private temple tours, sunrise hot air balloons, exclusive Nile-view flats & villas, and executive private transport." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800&family=Cinzel:wght@500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Multilingual Hreflang Tags for all 8 languages -->
+    <link rel="alternate" hreflang="x-default" href="https://luxor.vip/" />
+    <link rel="alternate" hreflang="en" href="https://luxor.vip/?lang=en" />
+    <link rel="alternate" hreflang="ar" href="https://luxor.vip/?lang=ar" />
+    <link rel="alternate" hreflang="de" href="https://luxor.vip/?lang=de" />
+    <link rel="alternate" hreflang="fr" href="https://luxor.vip/?lang=fr" />
+    <link rel="alternate" hreflang="es" href="https://luxor.vip/?lang=es" />
+    <link rel="alternate" hreflang="it" href="https://luxor.vip/?lang=it" />
+    <link rel="alternate" hreflang="ru" href="https://luxor.vip/?lang=ru" />
+    <link rel="alternate" hreflang="zh-CN" href="https://luxor.vip/?lang=zh-CN" />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://luxor.vip/#organization",
+          "name": "LUXOR.VIP",
+          "url": "https://luxor.vip",
+          "logo": "https://luxor.vip/logo.png",
+          "description": "Premium Luxor Tourism, Experiences, Accommodation & Transport Platform in Egypt.",
+          "telephone": "+20-100-234-5678",
+          "email": "concierge@luxor.vip",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Corniche El Nile",
+            "addressLocality": "Luxor",
+            "addressCountry": "EG"
+          }
+        },
+        {
+          "@type": "TouristAttraction",
+          "name": "Valley of the Kings & Luxor Temples",
+          "description": "Ancient royal tombs and pharaonic monuments in Ancient Thebes, Luxor, Egypt.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Luxor",
+            "addressCountry": "EG"
+          }
+        },
+        {
+          "@type": "TouristTrip",
+          "name": "Royal Sunrise Hot Air Balloon Odyssey",
+          "description": "Sunrise flight over the Theban Necropolis and River Nile.",
+          "provider": {
+            "@id": "https://luxor.vip/#organization"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "110",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

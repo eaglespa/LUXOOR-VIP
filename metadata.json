@@ -1,0 +1,6 @@
+{
+  "name": "LUXOR.VIP — Luxury Tourism, Flats & VIP Transport",
+  "description": "The premier luxury travel concierge in Luxor, Egypt. Curated private temple tours, sunrise hot air balloons, exclusive Nile-view flats & villas, and executive private transport.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

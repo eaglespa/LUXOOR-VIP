@@ -1,0 +1,607 @@
+# MASTER PROMPT: DESIGN AND BUILD LUXOR.VIP
+## Premium Luxor Tourism, Experiences, Accommodation & Transport Platform
+
+### 1. ROLE AND MISSION
+
+Act as an elite multidisciplinary team consisting of a senior UI/UX designer, creative director, full-stack engineer, motion designer, tourism business strategist, SEO expert, AI engineer, accessibility specialist, and conversion-rate optimization expert.
+
+Design and build **LUXOR.VIP**, a visually stunning, multilingual, responsive, high-performance tourism and travel booking platform dedicated to Luxor, Egypt.
+
+Website name: LUXOR.VIP  
+Brand positioning: Premium, immersive, trustworthy, culturally authentic, elegant, and modern.  
+Primary objective: Turn website visitors into confirmed bookings and inquiries.  
+Target audiences: International tourists, couples, families, solo travelers, luxury travelers, history enthusiasts, and visitors looking for local accommodation and reliable transportation.
+
+The website must feel like an exceptional combination of a luxury travel magazine, a premium travel concierge, and a modern booking marketplace.
+
+Do not create only a static mockup. Build a functional, production-oriented web application with real navigation, responsive layouts, booking flows, multilingual support, working forms, a scalable backend architecture, and a clear deployment strategy.
+
+### 2. VISUAL IDENTITY AND CREATIVE DIRECTION
+
+Create a sophisticated visual identity inspired by ancient Egyptian civilization, the golden desert, the Nile River, Luxor's temples, and contemporary luxury hospitality.
+
+Color palette:
+- Midnight Nile: #101D2B
+- Pharaoh Gold: #D6AD60
+- Desert Sand: #E9D8B5
+- Limestone Ivory: #F8F5EF
+- Papyrus: #C6B38A
+- Deep Obsidian: #181715
+- Nile Teal: #176C70
+
+Use gold as a refined accent, not an overwhelming color. Balance dramatic dark sections with warm ivory backgrounds, beautiful photography, generous whitespace, and elegant typography.
+
+Typography:
+- Use an elegant editorial serif for major headlines.
+- Use a highly readable modern sans-serif for body text and interfaces.
+- Support Arabic typography with a high-quality Arabic font.
+- Ensure all eight languages have appropriate fonts, line heights, text wrapping, and layouts.
+
+Design principles:
+- Premium editorial composition.
+- Full-bleed cinematic travel photography.
+- Layered depth, subtle gradients, and atmospheric lighting.
+- Refined cards, elegant icons, soft shadows, and precise spacing.
+- Tasteful Egyptian geometric motifs inspired by ancient architecture.
+- Modern interfaces rather than clichéd or overcrowded Egyptian-themed designs.
+
+The final design must look custom-built, memorable, polished, and premium on every screen size.
+
+### 3. CINEMATIC HOMEPAGE
+
+Build an extraordinary homepage with the following sections.
+
+A. Premium navigation bar
+- LUXOR.VIP wordmark and logo.
+- Explore Luxor.
+- Experiences.
+- Stay in Luxor.
+- Transportation.
+- Private Tours.
+- About Luxor.
+- Language selector.
+- Currency selector.
+- Account or booking access.
+- Prominent Book Now button.
+- Mobile navigation with smooth transitions.
+
+B. Immersive hero experience
+- Full-screen cinematic video showcasing Luxor at sunrise, the Nile, Karnak Temple, Luxor Temple, the Valley of the Kings, traditional feluccas, and hot-air balloons.
+- High-quality video with compressed assets, responsive sources, and a beautiful image fallback.
+- Elegant headline: "Discover Luxor. Experience Eternity."
+- Supporting text: "Extraordinary journeys, unforgettable stays, and seamless travel through the heart of ancient Egypt."
+- Primary CTA: Explore Experiences.
+- Secondary CTA: Plan Your Journey.
+- Integrated booking search interface.
+- Subtle scroll indicator.
+- Sophisticated entrance animations and atmospheric transitions.
+
+Ensure text remains readable over moving backgrounds and users with reduced-motion preferences receive an appropriate alternative.
+
+C. Quick booking panel
+Provide searchable booking categories:
+- Tours and excursions.
+- Holiday apartments.
+- Private transfers.
+- Airport transfers.
+- Private drivers.
+- Multi-day travel packages.
+
+Include destination, date, number of travelers, pickup location, and relevant category-specific fields.
+
+D. Featured experiences
+Present premium visual cards for:
+- Karnak Temple and Luxor Temple.
+- Valley of the Kings.
+- Hatshepsut Temple.
+- Hot-air balloon rides.
+- Nile felucca sailing.
+- Private archaeological tours.
+- East Bank and West Bank experiences.
+- Sunrise and sunset photography tours.
+- Authentic Egyptian cultural experiences.
+- Day trips to nearby destinations.
+
+Each card should include photography, a concise description, duration, starting price when verified, guest suitability, availability information, ratings when supported by genuine reviews, and a clear booking CTA.
+
+E. Discover Luxor
+Create an immersive editorial section combining maps, photography, storytelling, historical facts, and recommended itineraries.
+
+F. Stay in Luxor
+Showcase available holiday apartments, studios, serviced accommodation, and longer-stay rentals.
+
+G. Travel in comfort
+Feature private cars, airport transfers, tourist vehicles, professional drivers, and customizable transportation services.
+
+H. Why book with LUXOR.VIP?
+Highlight verified providers, transparent pricing, local expertise, secure payments, responsive support, and clear booking policies. Display only benefits that the business can actually deliver.
+
+I. Guest reviews
+Build a review section that uses genuine verified customer feedback. Do not invent testimonials, ratings, or customer identities.
+
+J. AI travel concierge
+Introduce an intelligent multilingual assistant with text and voice interaction.
+
+K. Footer
+Include navigation, contact information, social links, legal policies, booking support, language selection, newsletter signup, and business information.
+
+### 4. EXPERIENCES AND TOUR BOOKING SYSTEM
+
+Build a complete experience discovery and reservation workflow.
+
+Required features:
+- Search, sorting, and category filters.
+- Date selection and traveler counts.
+- Tour detail pages.
+- Photo galleries and optional video previews.
+- Itineraries, duration, inclusions, exclusions, meeting points, accessibility details, and cancellation policies.
+- Private and shared tour options.
+- Adult and child pricing where applicable.
+- Live availability from the connected provider or booking database.
+- Booking summaries and transparent price breakdowns.
+- Guest information forms.
+- Booking reference generation.
+- Email confirmations and booking status notifications.
+- Customer booking management.
+- Cancellation and modification workflows.
+- Admin-managed schedules, capacity, pricing, and blackout dates.
+- Optional discount codes and seasonal offers.
+
+Prevent double bookings by enforcing availability and capacity checks on the server. Prices and totals must be calculated and validated on the backend.
+
+Use a secure payment provider supporting the markets and currencies required by the business. Support deposits or full payments only where configured. Clearly distinguish confirmed reservations from pending requests.
+
+Never display fake availability, fabricated discounts, or unverified starting prices.
+
+### 5. ACCOMMODATION AND FLAT RENTALS
+
+Create a dedicated accommodation marketplace.
+
+Required features:
+- Property listing pages.
+- High-quality photographs and virtual-tour support.
+- Map-based discovery.
+- Check-in and check-out dates.
+- Number of guests and bedrooms.
+- Nightly pricing, cleaning fees, taxes, and deposits.
+- Minimum-stay rules.
+- Amenities, facilities, location, house rules, and cancellation terms.
+- Calendar-based availability.
+- Booking requests or instant booking, depending on the property's configuration.
+- Owner or property-manager dashboard.
+- Reservation calendar and pricing management.
+- Guest details and booking confirmations.
+- Review management for verified stays.
+
+Prevent overlapping reservations using database-level safeguards and transactional availability checks.
+
+Clearly distinguish short-term holiday accommodation from longer-term rental listings. Display accurate property details and disclose any additional fees before checkout.
+
+### 6. TOURISM TRANSPORTATION SYSTEM
+
+Create a premium transportation booking module.
+
+Service categories:
+- Airport pickups and drop-offs.
+- Private transfers between hotels and attractions.
+- Full-day private drivers.
+- Half-day sightseeing transportation.
+- Intercity transfers.
+- Family and group transportation.
+- Custom itineraries.
+
+Booking form:
+- Pickup location.
+- Destination.
+- Pickup date and time.
+- Passenger count.
+- Luggage quantity.
+- Vehicle category.
+- Optional return transfer.
+- Flight number when relevant.
+- Special requirements.
+
+Display vehicle capacity, included waiting time, luggage limits, transparent pricing, and cancellation policies.
+
+Support driver assignment, reservation status, pickup instructions, and customer notifications.
+
+Only offer real vehicle inventory, licensed providers, and confirmed services. Do not claim live GPS tracking unless a working tracking integration exists.
+
+### 7. EIGHT-LANGUAGE INTERNATIONAL EXPERIENCE
+
+Launch the platform in exactly these eight languages:
+
+1. English — en
+2. Arabic — ar
+3. German — de
+4. French — fr
+5. Spanish — es
+6. Italian — it
+7. Russian — ru
+8. Chinese Simplified — zh-CN
+
+Requirements:
+- Professional translation architecture.
+- Language selector accessible from every page.
+- Persistent language preference.
+- Correct localized URL structure.
+- Translated navigation, buttons, forms, booking flows, emails, validation errors, metadata, and policies.
+- Localized date, time, number, and currency formatting.
+- Correct right-to-left layout for Arabic, including navigation, forms, icons, and booking interfaces.
+- Correct font rendering and text expansion across languages.
+- Language-specific SEO metadata and hreflang annotations.
+- Translated AI concierge responses in all eight languages.
+
+Do not rely on translating only the homepage. Every customer-facing journey must be localized.
+
+Use a structured translation dictionary or a professional internationalization framework. AI-generated translations must be reviewable, especially for historical, legal, pricing, and booking-related information.
+
+Allow users to switch languages without losing their selected dates, travelers, or booking progress.
+
+### 8. MULTILINGUAL AI CONCIERGE WITH VOICE
+
+Build an AI-powered Luxor travel concierge named "Nefertari — Your Luxor Travel Companion."
+
+The assistant must support all eight website languages:
+English, Arabic, German, French, Spanish, Italian, Russian, and Simplified Chinese.
+
+Core capabilities:
+- Detect the user's language and allow manual language selection.
+- Answer questions about Luxor's history, monuments, neighborhoods, and travel logistics.
+- Recommend experiences based on budget, interests, available time, group size, and accessibility needs.
+- Suggest day-by-day itineraries.
+- Recommend available apartments and transportation options.
+- Search actual tours, property inventory, and transport availability through authorized backend tools.
+- Explain booking conditions, prices, inclusions, and cancellation policies.
+- Help users compare options.
+- Collect the information needed to initiate a booking.
+- Transfer users into the appropriate booking flow.
+- Provide context-aware follow-up suggestions.
+- Remember the current session's preferences with appropriate privacy controls.
+- Escalate to human support when uncertain or when a booking issue requires assistance.
+
+Voice features:
+- Microphone button with clear permission handling.
+- Speech-to-text input.
+- Natural-sounding text-to-speech responses.
+- Interruptible voice playback.
+- Visual listening, processing, and speaking states.
+- Text transcript for every voice conversation.
+- User controls to mute, stop, replay, and switch between voice and text.
+- Correct language and locale handling.
+- Arabic speech support, including dialect handling where supported by the selected voice provider.
+- Fallback to text when microphone or speech services are unavailable.
+- Explicit consent and clear handling of voice recordings and transcripts.
+
+Technical requirements:
+- Use a secure server-side AI integration.
+- Keep AI provider credentials and API keys out of browser code.
+- Use a configurable model and speech-provider abstraction.
+- Apply rate limiting, usage limits, input validation, and abuse protection.
+- Ground factual answers in approved destination content.
+- Ground prices and availability in live business data.
+- Require user confirmation before submitting a booking or making a payment.
+- Never let the AI claim that a booking is confirmed unless the booking system verifies it.
+- Do not expose internal prompts, private customer records, or other users' booking data.
+
+Design the concierge as an elegant floating chat button that opens a beautiful conversational panel, with an optional voice-first interface and a full-page assistant experience on mobile.
+
+### 9. ANIMATIONS, VIDEO, AND INTERACTION DESIGN
+
+Create a sophisticated motion system throughout the website.
+
+Include:
+- Cinematic hero-video transitions.
+- Smooth page transitions.
+- Scroll-triggered reveal animations.
+- Parallax imagery used sparingly.
+- Animated typography.
+- Elegant hover interactions.
+- Card image zoom effects.
+- Animated navigation indicators.
+- Smooth filter and search transitions.
+- Interactive destination maps.
+- Booking progress indicators.
+- Skeleton loading states.
+- Refined modal transitions.
+- Subtle animated gold accents.
+- Smooth AI assistant opening and closing.
+- Micro-interactions for buttons, form validation, and booking confirmations.
+
+Use a coherent motion language rather than animating every element independently.
+
+Performance requirements:
+- Prefer CSS animations and lightweight motion libraries.
+- Avoid excessive JavaScript animation loops.
+- Lazy-load below-the-fold video and image content.
+- Use optimized responsive video encodings and poster images.
+- Respect prefers-reduced-motion.
+- Disable or simplify expensive effects on low-powered devices.
+- Ensure animations never obstruct booking, navigation, accessibility, or readability.
+
+### 10. SEO AND INTERNATIONAL SEARCH VISIBILITY
+
+Implement technical, on-page, local, and multilingual SEO from the beginning.
+
+Technical SEO:
+- Server-rendered or statically generated indexable pages where appropriate.
+- Clean, descriptive, localized URLs.
+- XML sitemap index and language-aware sitemaps.
+- Correct canonical URLs.
+- Valid hreflang annotations for all equivalent language pages.
+- Robots.txt configuration.
+- Search-engine-friendly navigation and internal links.
+- Correct HTTP status codes and redirects.
+- Custom page titles and meta descriptions.
+- Open Graph and social sharing metadata.
+- Image alt text and descriptive filenames.
+- Breadcrumb navigation.
+- Structured data using appropriate schema.org types, such as Organization, TouristTrip, TouristAttraction, LodgingBusiness, Apartment, Product, Offer, and BreadcrumbList where valid and applicable.
+- Local business structured data only for legitimate, verified business information.
+- Review structured data only when eligible and based on genuine reviews.
+- Correct indexing rules for search parameters, calendars, account pages, and private booking pages.
+
+Content SEO:
+- Create dedicated landing pages for individual tours, attractions, accommodation categories, transport services, and destination guides.
+- Develop original, useful content about Luxor.
+- Build contextual internal linking between attractions, itineraries, tours, stays, and transport.
+- Optimize for search intent and relevant long-tail queries.
+- Support English, Arabic, German, French, Spanish, Italian, Russian, and Simplified Chinese keyword research.
+- Localize titles, descriptions, headings, image descriptions, and editorial content instead of simply translating keywords.
+- Prevent duplicate content across language versions.
+
+Conversion and measurement:
+- Integrate consent-aware analytics.
+- Track searches, listing views, booking starts, completed reservations, abandoned checkouts, and concierge-assisted conversions.
+- Provide XML sitemap validation and search indexing documentation.
+- Add optional Google Search Console and analytics integration.
+
+Do not promise first-page rankings. Build a technically sound foundation for sustainable organic growth.
+
+### 11. PERFORMANCE, ACCESSIBILITY, AND RESPONSIVENESS
+
+Build mobile-first, fully responsive experiences for:
+- Small smartphones.
+- Large smartphones.
+- Tablets.
+- Laptops.
+- Wide desktop displays.
+
+Performance targets:
+- Aim for Core Web Vitals in the "good" range at the 75th percentile: LCP at or below 2.5 seconds, INP at or below 200 milliseconds, and CLS at or below 0.1.
+- Optimize images using modern formats such as AVIF or WebP.
+- Serve appropriately sized responsive images.
+- Lazy-load noncritical content.
+- Minimize unused JavaScript and CSS.
+- Use caching and a CDN.
+- Defer nonessential third-party scripts.
+- Avoid autoplaying heavy video on constrained connections.
+- Use image fallbacks when video is disabled or unavailable.
+
+Accessibility:
+- Target WCAG 2.2 AA.
+- Full keyboard navigation.
+- Visible focus states.
+- Semantic HTML.
+- Accessible forms and error messages.
+- Screen-reader-compatible interactive controls.
+- Appropriate color contrast.
+- Captions or text alternatives for meaningful video.
+- Reduced-motion support.
+- Accessible language switching and RTL navigation.
+
+Test performance and accessibility with real tools instead of relying on visual judgment alone.
+
+### 12. TECHNICAL ARCHITECTURE
+
+Choose a modern, maintainable technology stack.
+
+Recommended baseline:
+- Frontend: Next.js with TypeScript and React.
+- Styling: Tailwind CSS with a custom design system.
+- Animation: Motion or another lightweight, maintained animation library.
+- Internationalization: A robust locale-aware routing and translation framework.
+- Backend: Secure server-side APIs and server actions where appropriate.
+- Database: PostgreSQL.
+- ORM: Prisma or an equivalent mature database toolkit.
+- Authentication: Secure session-based authentication with appropriate role management.
+- File storage: Object storage for optimized photographs and videos.
+- Payments: A reputable payment gateway supported in the business's operating market.
+- Email: A transactional email provider.
+- Maps: A suitable maps provider with the required licensing.
+- AI: Configurable language-model and voice-service integrations.
+- Deployment: A suitable production platform with managed database, backups, monitoring, and CDN support.
+
+Use the stack that best fits the deployment environment if a specific platform is already selected.
+
+Security requirements:
+- Server-side input validation.
+- Parameterized database operations.
+- Secure session management.
+- Role-based access control.
+- CSRF protection where applicable.
+- Rate limiting.
+- Secure secrets management.
+- Payment webhook signature verification.
+- Protection against common web vulnerabilities.
+- Audit trails for important administrative and financial actions.
+- Privacy-conscious logging.
+- Automated backups and a recovery plan.
+
+Never expose API secrets, payment credentials, private customer information, or privileged administrative functions to the public frontend.
+
+### 13. DATABASE AND ADMINISTRATIVE DASHBOARD
+
+Design a scalable database covering:
+
+- Users and roles.
+- Tours and experiences.
+- Tour schedules and availability.
+- Tour reservations.
+- Properties and property photographs.
+- Accommodation availability and rates.
+- Accommodation reservations.
+- Vehicles and transportation services.
+- Drivers and assignment records.
+- Transfer reservations.
+- Payments and refunds.
+- Coupons and promotions.
+- Languages and translated content.
+- Reviews and moderation.
+- Concierge conversations and consent records.
+- Notifications.
+- Audit logs.
+- Business settings and booking policies.
+
+Build a professional admin dashboard with:
+- Overview and key business metrics.
+- Booking management.
+- Tour and excursion management.
+- Property management.
+- Transportation and fleet management.
+- Availability calendars.
+- Pricing controls.
+- Customer management with appropriate permissions.
+- Refund and cancellation workflows.
+- Translation management.
+- Review moderation.
+- Concierge knowledge-base management.
+- Analytics and conversion reporting.
+- Staff roles and permissions.
+
+Create realistic demonstration data only for development and clearly label it as demo content. Production must use verified inventory, genuine business information, and real booking records.
+
+### 14. TRUST, LEGAL COMPLIANCE, AND CUSTOMER SUPPORT
+
+Provide the necessary structures for:
+- Privacy policy.
+- Cookie policy and consent management.
+- Terms and conditions.
+- Booking and cancellation policies.
+- Accommodation house rules.
+- Payment and refund terms.
+- Contact and support pages.
+- Accessibility information.
+- AI assistant disclosure.
+- Voice and conversation data controls.
+
+Configure legal requirements for the jurisdictions and services actually involved. Do not represent placeholder legal text as legal advice or final compliance.
+
+Show business identity, contact information, and service-provider details accurately. Avoid fabricated certifications, reviews, trust badges, or guarantees.
+
+### 15. REQUIRED PAGES
+
+Build these pages and templates:
+
+1. Homepage.
+2. All experiences.
+3. Individual experience details.
+4. Search results and filters.
+5. Booking checkout.
+6. Booking confirmation.
+7. My bookings.
+8. Accommodation listings.
+9. Individual property pages.
+10. Accommodation reservation flow.
+11. Transportation services.
+12. Transfer booking flow.
+13. Destination guide.
+14. Individual attraction guides.
+15. Suggested itineraries.
+16. About LUXOR.VIP.
+17. Contact and support.
+18. AI concierge.
+19. Login and registration.
+20. Customer profile.
+21. Favorites or saved experiences.
+22. FAQs.
+23. Blog and travel guides.
+24. Privacy policy.
+25. Terms and conditions.
+26. Cancellation and refund policies.
+27. Custom 404 and error pages.
+28. All eight localized versions of relevant public pages.
+29. Administrative dashboard.
+30. Operational booking-management interfaces.
+
+### 16. DEVELOPMENT WORKFLOW
+
+Work through these phases:
+
+Phase 1 — Discovery and design system
+- Define information architecture.
+- Establish the visual design system.
+- Define user journeys and conversion goals.
+- Produce responsive page layouts.
+
+Phase 2 — Frontend implementation
+- Build reusable components.
+- Implement the homepage and all core pages.
+- Implement mobile navigation and responsive layouts.
+- Add animations, image optimization, and video fallbacks.
+
+Phase 3 — Internationalization and SEO
+- Implement all eight languages.
+- Add RTL support.
+- Localize routes, metadata, and content.
+- Validate canonical and hreflang behavior.
+
+Phase 4 — Booking infrastructure
+- Build the database and server APIs.
+- Implement availability and pricing rules.
+- Build reservation, payment, and notification flows.
+- Implement customer and administrator interfaces.
+
+Phase 5 — AI concierge
+- Implement multilingual chat and voice.
+- Connect approved knowledge sources.
+- Connect search and availability tools.
+- Add privacy controls, error handling, and booking confirmation safeguards.
+
+Phase 6 — Quality assurance
+- Test all major screen sizes.
+- Test all eight languages.
+- Test Arabic RTL layouts.
+- Test booking edge cases, payment failures, cancellations, and overlapping reservations.
+- Run accessibility, security, SEO, and performance audits.
+- Verify all links, buttons, forms, and integrations.
+
+Phase 7 — Deployment
+- Configure production environment variables.
+- Apply database migrations.
+- Configure the domain and HTTPS.
+- Configure email, payments, maps, AI, and analytics.
+- Add monitoring, logging, backups, and deployment documentation.
+
+### 17. DEFINITION OF DONE
+
+The project is complete only when:
+
+- The website looks premium and visually distinctive.
+- The interface works on mobile, tablet, and desktop.
+- All eight languages are implemented across the relevant customer journeys.
+- Arabic has a properly tested RTL experience.
+- Tours, accommodation, and transportation have separate, coherent booking workflows.
+- Availability and prices are validated against the backend.
+- Payment integration is functional in the configured environment.
+- The AI concierge works in all eight languages supported by the selected models and voice providers.
+- Voice input and spoken responses work where browser, device, and provider capabilities allow.
+- SEO metadata, canonical URLs, hreflang, sitemaps, and structured data are implemented and validated.
+- Animations are smooth and respect reduced-motion preferences.
+- Accessibility and performance have been tested.
+- No critical security issues remain unresolved.
+- Production secrets are stored securely.
+- All major user flows have automated or documented manual tests.
+- Deployment instructions and environment configuration are documented.
+
+### 18. FINAL INSTRUCTION
+
+Start by establishing the design system and implementing a truly exceptional, responsive homepage. Continue by building the real pages, reusable components, booking infrastructure, multilingual system, AI concierge, and administrative tools.
+
+Prioritize working functionality, visual quality, accessibility, SEO, and performance equally.
+
+Do not stop at a static homepage, a Figma-like mockup, or a collection of nonfunctional buttons. Do not fake booking availability, payments, customer reviews, AI responses, or external integrations.
+
+If an external service requires credentials, create a clean integration interface, explain the required configuration, and provide a clearly labeled development fallback.
+
+Deliver clean, maintainable, production-oriented code and a cohesive premium digital experience worthy of the LUXOR.VIP brand.
