@@ -425,7 +425,7 @@ export const REVIEWS = [
     origin: 'London, United Kingdom',
     experience: 'Sunrise Balloon & Theban Villa Stay',
     quote:
-      'LUXOR.VIP orchestrated the single most memorable trip of our lives. Watching the sunrise from 2,500 feet over the Valley of the Kings was breathtaking, and our villa on the West Bank was pure sanctuary.',
+      'GO VOYAGE orchestrated the single most memorable trip of our lives. Watching the sunrise from 2,500 feet over the Valley of the Kings was breathtaking, and our villa on the West Bank was pure sanctuary.',
     date: 'February 2026',
     rating: 5,
   },
@@ -454,7 +454,7 @@ export const REVIEWS = [
 export const FAQS = [
   {
     q: 'How safe are the Hot Air Balloon flights in Luxor?',
-    a: 'LUXOR.VIP partners exclusively with top-tier operators fully licensed and audited daily by the Egyptian Civil Aviation Authority. Flights are commanded by pilots with over 15+ years of flight hours, utilizing state-of-the-art Cameron balloons with radar wind clearance.',
+    a: 'GO VOYAGE partners exclusively with top-tier operators fully licensed and audited daily by the Egyptian Civil Aviation Authority. Flights are commanded by pilots with over 15+ years of flight hours, utilizing state-of-the-art Cameron balloons with radar wind clearance.',
   },
   {
     q: 'What is the advantage of staying on the West Bank vs. East Bank?',

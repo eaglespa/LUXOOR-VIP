@@ -187,7 +187,7 @@ export const VirtualBalloonExperience: React.FC<VirtualBalloonExperienceProps> =
 
             {/* Wicker Basket Edge */}
             <div className="w-72 sm:w-96 h-14 bg-gradient-to-b from-[#5C3B1E] to-[#2E1A0A] rounded-t-2xl border-t-2 border-[#D4AF37]/60 shadow-2xl flex items-center justify-center text-xs font-cinzel text-amber-200/90 tracking-widest pointer-events-auto">
-              LUXOR.VIP · ROYAL FLIGHT NO. 01
+              GO VOYAGE · ROYAL FLIGHT NO. 01
             </div>
           </div>
         </div>

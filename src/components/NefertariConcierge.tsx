@@ -247,7 +247,7 @@ export const NefertariConcierge: React.FC<NefertariConciergeProps> = ({
       if (language === 'ar') {
         return {
           reply:
-            'أسطول LUXOR.VIP يضم سيارات مرسيدس E-Class و S-Class وفانات V-Class الفاخرة مع سائقين معتمدين يتحدثون الإنجليزية ولغات متعددة. نوفر خدمة استقبال كبار الزوار بمطار الأقصر الدولي (LXR) مع 60 دقيقة انتظار مجانية بسعر 45 دولاراً فقط.',
+            'أسطول GO VOYAGE يضم سيارات مرسيدس E-Class و S-Class وفانات V-Class الفاخرة مع سائقين معتمدين يتحدثون الإنجليزية ولغات متعددة. نوفر خدمة استقبال كبار الزوار بمطار الأقصر الدولي (LXR) مع 60 دقيقة انتظار مجانية بسعر 45 دولاراً فقط.',
           action: { type: 'transport', itemId: 'airport-vip-chauffeur', label: 'حجز سيارة مرسيدس وسائق' },
         };
       } else if (language === 'fr') {

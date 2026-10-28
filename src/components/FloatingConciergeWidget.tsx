@@ -18,8 +18,8 @@ export const FloatingConciergeWidget: React.FC<FloatingConciergeWidgetProps> = (
     const text = encodeURIComponent(
       message ||
         (isRTL
-          ? 'مرحباً LUXOR.VIP، أود الاستفسار عن حجز تجربة فاخرة في الأقصر.'
-          : 'Hello LUXOR.VIP, I would like to inquire about booking a luxury experience in Luxor.')
+          ? 'مرحباً GO VOYAGE، أود الاستفسار عن حجز تجربة فاخرة في الأقصر.'
+          : 'Hello GO VOYAGE, I would like to inquire about booking a luxury experience in Luxor.')
     );
     window.open(`https://wa.me/201000000000?text=${text}`, '_blank');
     setIsOpen(false);

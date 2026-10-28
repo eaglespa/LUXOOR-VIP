@@ -174,7 +174,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       selectedAddons,
       currency: currentCurrency,
       guestName: guestName || 'Esteemed Guest',
-      guestEmail: guestEmail || 'vip@luxor.vip',
+      guestEmail: guestEmail || 'vip@govoyage.vip',
       guestPhone: guestPhone || '+20 100 000 0000',
       specialRequests,
       totalPriceUSD: totalUSD,
@@ -717,7 +717,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
               <div className="flex items-center gap-3">
                 <a
-                  href={`https://wa.me/201000000000?text=Hello%20Luxor.VIP,%20I%20have%20reservation%20${confirmation.bookingRef}`}
+                  href={`https://wa.me/201000000000?text=Hello%20GO%20VOYAGE,%20I%20have%20reservation%20${confirmation.bookingRef}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors"

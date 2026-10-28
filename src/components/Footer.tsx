@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, Phone, MapPin, ShieldCheck } from 'lucide-react';
 import { useI18n } from '../i18n/I18nContext';
 import { PolicyType } from './PolicyModal';
+import { LuxorWeather } from './LuxorWeather';
 
 interface FooterProps {
   onOpenPolicy: (type: PolicyType) => void;
@@ -14,11 +15,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPolicy, onOpenAdmin }) => 
   return (
     <footer className="bg-[#0A0B0E] border-t border-stone-800 text-stone-400 text-xs py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Luxor Weather: Current Temperature & Historical Climate Advice for Tourists */}
+        <div className="mb-14">
+          <LuxorWeather variant="footer" />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-stone-800/80">
           {/* Brand Col */}
           <div className="md:col-span-1">
             <span className="font-cinzel text-xl font-bold tracking-widest text-gold-gradient block mb-3">
-              LUXOR.VIP
+              GO VOYAGE
             </span>
             <p className="text-xs text-stone-300 leading-relaxed font-light">
               {t.footer.tagline}
@@ -110,8 +116,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPolicy, onOpenAdmin }) => 
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#D6AD60] shrink-0" />
-                <a href="mailto:concierge@luxor.vip" className="hover:text-white transition-colors">
-                  concierge@luxor.vip
+                <a href="mailto:concierge@govoyage.vip" className="hover:text-white transition-colors">
+                  concierge@govoyage.vip
                 </a>
               </li>
             </ul>

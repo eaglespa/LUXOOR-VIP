@@ -17,7 +17,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
       body: (
         <div className="space-y-4 text-xs sm:text-sm text-stone-300 leading-relaxed">
           <p>
-            At <strong>LUXOR.VIP</strong>, client discretion is sacred. We collect personal contact information (name, phone/WhatsApp, email) solely for coordinating executive transfers, securing temple entrance permits, and delivering confirmed vouchers.
+            At <strong>GO VOYAGE</strong>, client discretion is sacred. We collect personal contact information (name, phone/WhatsApp, email) solely for coordinating executive transfers, securing temple entrance permits, and delivering confirmed vouchers.
           </p>
           <h4 className="font-bold text-white uppercase text-xs tracking-wider">1. Information We Secure</h4>
           <p>
@@ -35,7 +35,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
       body: (
         <div className="space-y-4 text-xs sm:text-sm text-stone-300 leading-relaxed">
           <p>
-            All bookings arranged via <strong>LUXOR.VIP</strong> are operated under full licensing by the Egyptian Ministry of Tourism and Antiquities and the Egyptian Civil Aviation Authority.
+            All bookings arranged via <strong>GO VOYAGE</strong> are operated under full licensing by the Egyptian Ministry of Tourism and Antiquities and the Egyptian Civil Aviation Authority.
           </p>
           <h4 className="font-bold text-white uppercase text-xs tracking-wider">1. Safety & Aviation Authority</h4>
           <p>
@@ -71,7 +71,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ type, onClose }) => {
       body: (
         <div className="space-y-4 text-xs sm:text-sm text-stone-300 leading-relaxed">
           <p>
-            <strong>LUXOR.VIP</strong> is dedicated to ensuring ancient Egypt is accessible to all travelers. We adhere to WCAG 2.2 AA digital accessibility standards with keyboard navigation and screen-reader support.
+            <strong>GO VOYAGE</strong> is dedicated to ensuring ancient Egypt is accessible to all travelers. We adhere to WCAG 2.2 AA digital accessibility standards with keyboard navigation and screen-reader support.
           </p>
           <h4 className="font-bold text-white uppercase text-xs tracking-wider">1. Wheelchair-Accessible Ground Mobility</h4>
           <p>

@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="/"
             className="font-cinzel text-xl sm:text-2xl font-bold tracking-widest text-gold-gradient whitespace-nowrap shrink-0 hover:opacity-90 transition-opacity"
           >
-            LUXOR.VIP
+            GO VOYAGE
           </a>
 
           {/* Zone 2: 4–5 clean single-line text navigation links */}

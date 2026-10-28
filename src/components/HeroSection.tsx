@@ -15,6 +15,7 @@ import {
   Star,
   Mic,
   Crown,
+  ChevronDown,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useI18n } from '../i18n/I18nContext';
@@ -120,13 +121,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </button>
         </div>
 
-        {/* Current Weather in Luxor Live Meteorological Component */}
-        <LuxorWeather />
+        {/* Current Weather in Luxor Live Meteorological Component (Compact Hero Bar) */}
+        <LuxorWeather variant="compact" />
 
         {/* Master Prompt Section 3.C: Quick Booking Panel with 6 Searchable Categories */}
-        <div className="mt-8 max-w-4xl mx-auto bg-[#181715]/95 border border-[#D6AD60]/30 rounded-2xl p-4 sm:p-5 shadow-2xl backdrop-blur-md">
-          {/* 6 Category Tabs */}
-          <div className="flex items-center justify-start sm:justify-center gap-1.5 mb-4 border-b border-stone-800 pb-3 overflow-x-auto scrollbar-none">
+        <div className="mt-6 max-w-4xl mx-auto bg-gradient-to-b from-[#111A26]/95 via-[#0D1520]/95 to-[#090F17]/95 border border-[#D6AD60]/40 rounded-3xl p-5 sm:p-7 shadow-[0_25px_60px_rgba(0,0,0,0.7),0_0_25px_rgba(214,173,96,0.12)] backdrop-blur-xl relative overflow-hidden text-start">
+          {/* Subtle Top Pharaoh Gold Radiance Line */}
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#D6AD60] to-transparent opacity-90" />
+          <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#D6AD60]/10 rounded-full blur-2xl pointer-events-none" />
+
+          {/* 6 Category Tabs in Floating Track */}
+          <div className="bg-[#070D14]/90 p-1.5 rounded-2xl border border-stone-800/80 mb-5 flex items-center justify-start sm:justify-center gap-1.5 overflow-x-auto scrollbar-none">
             {[
               { id: 'tours', label: t.hero.catTours, icon: Compass },
               { id: 'flats', label: t.hero.catFlats, icon: Home },
@@ -136,18 +141,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               { id: 'packages', label: t.hero.catPackages, icon: Sparkles },
             ].map((tab) => {
               const Icon = tab.icon;
+              const isActive = activeCategory === tab.id;
               return (
                 <button
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveCategory(tab.id as typeof activeCategory)}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all whitespace-nowrap ${
-                    activeCategory === tab.id
-                      ? 'bg-[#D6AD60] text-[#101D2B] shadow-md font-bold'
-                      : 'text-stone-300 hover:text-white hover:bg-stone-800/60'
+                  className={`flex items-center gap-1.5 px-3.5 py-2 text-xs rounded-xl transition-all whitespace-nowrap ${
+                    isActive
+                      ? 'bg-gradient-to-r from-[#D6AD60] to-[#E8C576] text-stone-950 font-bold shadow-md shadow-[#D6AD60]/20 scale-[1.02]'
+                      : 'text-stone-300 hover:text-white hover:bg-white/5 font-medium'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-stone-950' : 'text-[#D6AD60]'}`} />
                   <span>{tab.label}</span>
                 </button>
               );
@@ -157,7 +163,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button
                 type="button"
                 onClick={onOpenVoiceSearch}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-[#D6AD60]/15 border border-[#D6AD60]/40 text-[#D6AD60] hover:bg-[#D6AD60]/25 transition-all whitespace-nowrap shrink-0 group shadow-sm active:scale-95"
+                className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-xl bg-[#D6AD60]/15 border border-[#D6AD60]/40 text-[#D6AD60] hover:bg-[#D6AD60]/25 transition-all whitespace-nowrap shrink-0 group shadow-sm active:scale-95 ml-auto sm:ml-0"
                 title="Voice Command: Say 'Book a balloon ride' or 'Show villas in West Bank'"
               >
                 <Mic className="w-3.5 h-3.5 text-[#D6AD60] animate-pulse" />
@@ -167,10 +173,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Form fields */}
-          <form onSubmit={handleSearch} className="grid grid-cols-1 sm:grid-cols-12 gap-3 text-start">
+          <form onSubmit={handleSearch} className="grid grid-cols-1 sm:grid-cols-12 gap-3.5">
             {/* Field 1: Route / Destination / Category Specific Field */}
-            <div className="sm:col-span-5 bg-[#101D2B]/90 border border-stone-800 rounded-xl p-2.5">
-              <label className="block text-[10px] font-medium uppercase tracking-wider text-stone-400 mb-1">
+            <div className="sm:col-span-4 bg-[#090F17]/90 hover:bg-[#0C1520] border border-stone-700/80 hover:border-[#D6AD60]/50 rounded-2xl p-3 sm:p-3.5 transition-all group">
+              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] mb-1">
                 {activeCategory === 'tours' && 'Excursion Category'}
                 {activeCategory === 'flats' && 'Accommodation Area'}
                 {activeCategory === 'transfers' && 'Pickup & Destination'}
@@ -178,19 +184,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {activeCategory === 'drivers' && 'Dedicated Chauffeur Duration'}
                 {activeCategory === 'packages' && 'Curated Itinerary Route'}
               </label>
-              <div className="text-xs sm:text-sm font-semibold text-white truncate">
-                {activeCategory === 'tours' && 'Hot Air Balloon & Valley of Kings'}
-                {activeCategory === 'flats' && 'West Bank & Nilefront Villas'}
-                {activeCategory === 'transfers' && 'Luxor East Bank to West Bank / Temples'}
-                {activeCategory === 'airport' && 'Luxor International Airport (LXR) Curbside'}
-                {activeCategory === 'drivers' && '10 Hours Full-Day Executive Service'}
-                {activeCategory === 'packages' && '3 to 7 Days Complete Theban Odyssey'}
+              <div className="text-xs sm:text-sm font-semibold text-white truncate flex items-center justify-between">
+                <span>
+                  {activeCategory === 'tours' && 'Hot Air Balloon & Valley of Kings'}
+                  {activeCategory === 'flats' && 'West Bank & Nilefront Villas'}
+                  {activeCategory === 'transfers' && 'Luxor East Bank to West Bank / Temples'}
+                  {activeCategory === 'airport' && 'Luxor International Airport (LXR) Curbside'}
+                  {activeCategory === 'drivers' && '10 Hours Full-Day Executive Service'}
+                  {activeCategory === 'packages' && '3 to 7 Days Complete Theban Odyssey'}
+                </span>
+                <ChevronDown className="w-3.5 h-3.5 text-stone-500 group-hover:text-[#D6AD60] shrink-0 ml-1 transition-colors" />
               </div>
             </div>
 
             {/* Field 2: Date Picker */}
-            <div className="sm:col-span-3 bg-[#101D2B]/90 border border-stone-800 rounded-xl p-2.5">
-              <label className="block text-[10px] font-medium uppercase tracking-wider text-stone-400 mb-1">
+            <div className="sm:col-span-3 bg-[#090F17]/90 hover:bg-[#0C1520] border border-stone-700/80 hover:border-[#D6AD60]/50 rounded-2xl p-3 sm:p-3.5 transition-all group">
+              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] mb-1">
                 <span className="flex items-center gap-1">
                   <Calendar className="w-3 h-3 text-[#D6AD60]" /> {t.hero.date}
                 </span>
@@ -200,13 +209,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 value={date}
                 min={new Date().toISOString().split('T')[0]}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full bg-transparent text-xs sm:text-sm text-white focus:outline-none font-medium cursor-pointer"
+                className="w-full bg-transparent text-xs sm:text-sm text-white focus:outline-none font-semibold cursor-pointer scheme-dark"
               />
             </div>
 
             {/* Field 3: Travelers */}
-            <div className="sm:col-span-2 bg-[#101D2B]/90 border border-stone-800 rounded-xl p-2.5">
-              <label className="block text-[10px] font-medium uppercase tracking-wider text-stone-400 mb-1">
+            <div className="sm:col-span-2 bg-[#090F17]/90 hover:bg-[#0C1520] border border-stone-700/80 hover:border-[#D6AD60]/50 rounded-2xl p-3 sm:p-3.5 transition-all group">
+              <label className="block text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] mb-1">
                 <span className="flex items-center gap-1">
                   <Users className="w-3 h-3 text-[#D6AD60]" /> {t.hero.travelers}
                 </span>
@@ -214,10 +223,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <select
                 value={guests}
                 onChange={(e) => setGuests(Number(e.target.value))}
-                className="w-full bg-[#101D2B] text-xs sm:text-sm text-white focus:outline-none font-medium cursor-pointer"
+                className="w-full bg-transparent text-xs sm:text-sm text-white focus:outline-none font-semibold cursor-pointer scheme-dark"
               >
                 {[1, 2, 3, 4, 5, 6, 7, 8, 10].map((num) => (
-                  <option key={num} value={num}>
+                  <option key={num} value={num} className="bg-[#0A0E17] text-white">
                     {num} {num === 1 ? t.hero.guest : t.hero.guests}
                   </option>
                 ))}
@@ -225,10 +234,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* CTA Button */}
-            <div className="sm:col-span-2 flex items-stretch">
+            <div className="sm:col-span-3 flex items-stretch">
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#D6AD60] to-[#E9D8B5] hover:opacity-95 text-[#101D2B] font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-lg active:scale-95 py-3 sm:py-0"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#DFB15B] via-[#D6AD60] to-[#E9D8B5] hover:brightness-110 text-stone-950 font-cinzel font-bold text-xs uppercase tracking-wider rounded-2xl transition-all shadow-xl shadow-[#D6AD60]/25 active:scale-[0.98] py-3.5 sm:py-0"
               >
                 <span>{t.hero.checkAvailability}</span>
                 <ArrowRight className={`w-4 h-4 ${isRTL ? 'rotate-180' : ''}`} />
@@ -237,20 +246,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </form>
 
           {/* Verification strip & Loyalty Notice */}
-          <div className="mt-3 flex flex-wrap items-center justify-between text-xs text-stone-300 px-1 pt-2 border-t border-stone-800/60 gap-2">
+          <div className="mt-4 pt-3.5 border-t border-stone-800/80 flex flex-wrap items-center justify-between text-xs text-stone-300 gap-3">
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="flex items-center gap-1.5 text-stone-300">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#D6AD60]" />
+              <span className="flex items-center gap-1.5 text-stone-300 font-medium">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 {t.hero.verifiedBadge}
               </span>
-              <span className="flex items-center gap-1 text-[#D6AD60]">
-                <Crown className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D6AD60]/10 border border-[#D6AD60]/30 text-[#D6AD60] font-semibold text-[11px]">
+                <Crown className="w-3.5 h-3.5 text-[#D6AD60]" />
                 <span>Earn 10–20 Luxor Points / $1</span>
               </span>
             </div>
-            <span>
+            <span className="text-stone-400 font-light">
               {t.hero.ratesFrom}{' '}
-              <strong className="text-white">
+              <strong className="text-white font-cinzel font-bold">
                 {activeCategory === 'flats'
                   ? `${formatPrice(140, currentCurrency)}/${t.hero.perNight}`
                   : activeCategory === 'tours'

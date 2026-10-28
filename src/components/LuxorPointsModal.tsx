@@ -137,7 +137,7 @@ export const LuxorPointsModal: React.FC<LuxorPointsModalProps> = ({
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="font-cinzel font-bold text-sm tracking-widest text-[#D6AD60]">
-                        LUXOR.VIP
+                        GO VOYAGE
                       </span>
                       <span className="text-[10px] uppercase tracking-widest text-stone-400 border border-stone-700 px-2 py-0.5 rounded-full">
                         Royal Cartouche Pass

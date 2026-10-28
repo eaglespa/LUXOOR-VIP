@@ -640,7 +640,7 @@ export const VoiceSearchModal: React.FC<VoiceSearchModalProps> = ({
         {/* Header Kicker */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#182838] border border-[#D6AD60]/30 text-[11px] font-semibold text-[#D6AD60] uppercase tracking-widest mb-4">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>LUXOR.VIP • Voice Command Search</span>
+          <span>GO VOYAGE • Voice Command Search</span>
         </div>
 
         <h2 className="font-cinzel text-2xl sm:text-3xl font-bold text-white mb-2">

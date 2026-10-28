@@ -458,7 +458,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       bookNowAction: 'Reserve Selected Experience',
     },
     admin: {
-      title: 'LUXOR.VIP Operational Management',
+      title: 'GO VOYAGE Operational Management',
       subtitle: 'Live bookings, fleet dispatch, availability calendars, and inventory control',
       totalRevenue: 'Gross Revenue (MTD)',
       activeBookings: 'Confirmed Bookings',
@@ -481,7 +481,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       ctaButton: 'VIP CONCIERGE',
     },
     modal: {
-      passTitle: 'LUXOR.VIP RESERVATION PASS',
+      passTitle: 'GO VOYAGE RESERVATION PASS',
       tabTours: 'Tours & Balloon',
       tabFlats: 'Flats & Villas',
       tabTransport: 'VIP Transport',
@@ -525,7 +525,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       quickLinks: 'Navigation',
       guides: 'Destination Guides',
       contact: 'VIP Concierge Desk',
-      rights: 'LUXOR.VIP Global Hospitality. All rights reserved.',
+      rights: 'GO VOYAGE Global Hospitality. All rights reserved.',
       privacy: 'Privacy Policy',
       terms: 'Terms of Service',
       cancellation: 'Cancellation & Refunds',
@@ -720,7 +720,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       bookNowAction: 'حجز التجربة المختارة فوراً',
     },
     admin: {
-      title: 'إدارة عمليات LUXOR.VIP',
+      title: 'إدارة عمليات GO VOYAGE',
       subtitle: 'الحجوزات المباشرة، إدارة الأسطول، جداول التوفر، والتحكم في الأسعار',
       totalRevenue: 'إجمالي الإيرادات (شهرياً)',
       activeBookings: 'الحجوزات المؤكدة',
@@ -743,7 +743,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       ctaButton: 'الكونسيرج الخاص',
     },
     modal: {
-      passTitle: 'تذكرة حجز LUXOR.VIP الرسمية',
+      passTitle: 'تذكرة حجز GO VOYAGE الرسمية',
       tabTours: 'الرحلات والمنطاد',
       tabFlats: 'الشقق والفلل',
       tabTransport: 'النقل الفاخر',
@@ -787,7 +787,7 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       quickLinks: 'الروابط السريعة',
       guides: 'دليل الوجهات',
       contact: 'مكتب الكونسيرج الملكي',
-      rights: 'مجموعة ضيافة LUXOR.VIP الدولية. جميع الحقوق محفوظة.',
+      rights: 'مجموعة ضيافة GO VOYAGE الدولية. جميع الحقوق محفوظة.',
       privacy: 'سياسة الخصوصية',
       terms: 'شروط الخدمة',
       cancellation: 'سياسة الإلغاء والاسترداد',

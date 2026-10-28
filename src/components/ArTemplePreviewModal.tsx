@@ -896,7 +896,7 @@ export const ArTemplePreviewModal: React.FC<ArTemplePreviewModalProps> = ({
 
       ctx.fillStyle = '#D6AD60';
       ctx.font = 'bold 22px Cinzel, serif';
-      ctx.fillText('LUXOR.VIP • AR EXPEDITION', 40, height - 50);
+      ctx.fillText('GO VOYAGE • AR EXPEDITION', 40, height - 50);
 
       ctx.fillStyle = '#E9D8B5';
       ctx.font = '14px sans-serif';
@@ -1045,7 +1045,7 @@ export const ArTemplePreviewModal: React.FC<ArTemplePreviewModalProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-[#D6AD60]">
-                  LUXOR.VIP • AR 3D VIEWER
+                  GO VOYAGE • AR 3D VIEWER
                 </span>
                 <span
                   className={`text-[9px] px-2 py-0.5 rounded-full font-semibold uppercase ${
