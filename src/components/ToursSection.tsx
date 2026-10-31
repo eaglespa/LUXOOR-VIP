@@ -51,8 +51,14 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
 
   return (
     <section id="tours" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-stone-800/80">
-      {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      {/* Section Header with Scroll-Triggered Reveal */}
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] as const }}
+        className="flex flex-col md:flex-row md:items-end justify-between mb-12"
+      >
         <div>
           <span className="text-xs uppercase tracking-widest text-[#D4AF37] font-semibold">
             {t.tours.kicker}
@@ -86,7 +92,7 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Tours Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -96,10 +102,10 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
           return (
             <motion.div
               key={tour.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 38 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.75, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] as const }}
               className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
             >
               <div>
