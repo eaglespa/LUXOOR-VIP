@@ -258,16 +258,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* =========================================================================
           VIDEO CONTROLS & SCENE SWITCHER BAR
       ========================================================================= */}
-      <div className="absolute bottom-4 right-4 z-20 flex items-center gap-2">
+      <div className="absolute bottom-3 end-3 sm:bottom-5 sm:end-6 z-20 flex items-center gap-1.5 sm:gap-2">
         {/* Scene Selector Menu Trigger */}
         <div className="relative">
           <button
             type="button"
             onClick={() => setShowSceneSelector(!showSceneSelector)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/65 hover:bg-black/85 border border-[#D6AD60]/40 text-stone-200 hover:text-white text-xs backdrop-blur-md transition-all group shadow-md"
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-black/70 hover:bg-black/90 border border-[#D6AD60]/50 text-stone-200 hover:text-white text-xs backdrop-blur-md transition-all group shadow-lg"
             title="Change Ambient Video Scene"
           >
-            <Layers className="w-3 h-3 text-[#D6AD60] group-hover:rotate-12 transition-transform" />
+            <Layers className="w-3 h-3 text-[#D6AD60] group-hover:rotate-12 transition-transform shrink-0" />
             <span className="hidden sm:inline text-[10px] font-mono tracking-wider text-[#E9D8B5]">
               {activeScene.label}
             </span>
@@ -281,7 +281,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 initial={{ opacity: 0, y: 8, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                className="absolute bottom-full right-0 mb-2 w-64 bg-[#0A131F]/95 border border-[#D6AD60]/40 rounded-2xl shadow-2xl p-2 backdrop-blur-xl z-30"
+                className={`absolute bottom-full mb-2 w-64 bg-[#0A131F]/95 border border-[#D6AD60]/40 rounded-2xl shadow-2xl p-2 backdrop-blur-xl z-30 ${isRTL ? 'left-0' : 'right-0'}`}
               >
                 <div className="text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] px-2.5 py-1 mb-1 border-b border-stone-800">
                   Select Video Scene
@@ -437,7 +437,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#D6AD60]/10 rounded-full blur-2xl pointer-events-none" />
 
           {/* Category Tabs in Floating Track */}
-          <div className="bg-[#070D14]/90 p-2 rounded-2xl border border-stone-800/80 mb-6 flex items-center justify-start lg:justify-between gap-2 overflow-x-auto scrollbar-none">
+          <div className="bg-[#070D14]/90 p-1.5 sm:p-2 rounded-2xl border border-stone-800/80 mb-6 flex items-center justify-start lg:justify-between gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none touch-pan-x">
             {[
               { id: 'tours', label: t.hero.catTours, icon: Compass },
               { id: 'flats', label: t.hero.catFlats, icon: Home },
@@ -452,7 +452,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   key={tab.id}
                   type="button"
                   onClick={() => setActiveCategory(tab.id as typeof activeCategory)}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 text-xs rounded-xl transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 px-3 sm:px-3.5 py-2 text-xs rounded-xl transition-all whitespace-nowrap active:scale-95 ${
                     isActive
                       ? 'bg-gradient-to-r from-[#D6AD60] to-[#E8C576] text-stone-950 font-bold shadow-md shadow-[#D6AD60]/20 scale-[1.02]'
                       : 'text-stone-300 hover:text-white hover:bg-white/5 font-medium'

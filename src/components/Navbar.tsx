@@ -89,49 +89,49 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </nav>
 
-          {/* Zone 3: 1 primary action + 8-Language Switcher + Currency + Concierge Trigger */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          {/* Zone 3: Actions + Language + Currency + Concierge Trigger */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             {/* Luxor Points Royal Club Status Button */}
             <button
               onClick={onOpenLoyalty}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#D6AD60]/60 bg-gradient-to-r from-[#D6AD60]/20 via-[#D6AD60]/10 to-[#181715]/80 hover:bg-[#D6AD60]/30 text-[#D6AD60] text-xs font-semibold transition-all group shadow-sm active:scale-95"
+              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg border border-[#D6AD60]/60 bg-gradient-to-r from-[#D6AD60]/20 via-[#D6AD60]/10 to-[#181715]/80 hover:bg-[#D6AD60]/30 text-[#D6AD60] text-xs font-semibold transition-all group shadow-sm active:scale-95"
               title="Luxor Points Royal Club — View digital card, tiers & rewards"
             >
-              <Crown className="w-3.5 h-3.5 text-[#D6AD60] group-hover:scale-110 transition-transform" />
+              <Crown className="w-3.5 h-3.5 text-[#D6AD60] group-hover:scale-110 transition-transform shrink-0" />
               <span className="font-cinzel tracking-wider text-[11px] font-bold">
-                {points.toLocaleString()} <span className="font-normal text-[10px]">PTS</span>
+                {points.toLocaleString()} <span className="font-normal text-[10px] hidden xs:inline">PTS</span>
               </span>
             </button>
 
-            {/* Voice-Activated Search Command Button */}
+            {/* Voice-Activated Search Command Button (Desktop & Tablet) */}
             <button
               onClick={onOpenVoiceSearch}
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#D6AD60]/50 bg-[#D6AD60]/10 hover:bg-[#D6AD60]/25 text-[#D6AD60] text-xs font-semibold transition-all group shadow-sm active:scale-95"
+              className="hidden md:flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#D6AD60]/50 bg-[#D6AD60]/10 hover:bg-[#D6AD60]/25 text-[#D6AD60] text-xs font-semibold transition-all group shadow-sm active:scale-95"
               title="Voice Commands: Say 'Book a balloon ride', 'Show villas in West Bank'"
             >
-              <Mic className="w-3.5 h-3.5 text-[#D6AD60] group-hover:scale-110 transition-transform animate-pulse" />
-              <span className="hidden md:inline font-cinzel tracking-wider text-[11px]">Voice Search</span>
+              <Mic className="w-3.5 h-3.5 text-[#D6AD60] group-hover:scale-110 transition-transform" />
+              <span className="font-cinzel tracking-wider text-[11px]">Voice Search</span>
             </button>
 
-            {/* Nefertari AI Voice Trigger */}
+            {/* Nefertari AI Voice Trigger (Desktop & Tablet) */}
             <button
               onClick={onOpenNefertari}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#D6AD60]/40 bg-[#181715]/80 hover:bg-[#D6AD60]/20 text-[#D6AD60] text-xs font-semibold transition-all group"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#D6AD60]/40 bg-[#181715]/80 hover:bg-[#D6AD60]/20 text-[#D6AD60] text-xs font-semibold transition-all group"
               title="Speak to Nefertari AI Concierge"
             >
-              <Sparkles className="w-3.5 h-3.5 animate-pulse text-[#D6AD60]" />
-              <span className="hidden sm:inline">Nefertari AI</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#D6AD60]" />
+              <span>Nefertari AI</span>
             </button>
 
-            {/* Ambient Sound Atmosphere toggle */}
+            {/* Ambient Sound Atmosphere toggle (Desktop & Tablet) */}
             <button
               onClick={handleToggleAudio}
               title={audioActive ? t.nav.soundActive : t.nav.soundMute}
-              className="p-2 rounded-lg border border-stone-800 bg-stone-900/60 text-stone-400 hover:text-[#D6AD60] hover:border-[#D6AD60]/40 transition-colors"
+              className="hidden md:flex p-2 rounded-lg border border-stone-800 bg-stone-900/60 text-stone-400 hover:text-[#D6AD60] hover:border-[#D6AD60]/40 transition-colors"
               aria-label="Toggle ambient desert audio"
             >
               {audioActive ? (
-                <Volume2 className="w-4 h-4 text-[#D6AD60] animate-pulse" />
+                <Volume2 className="w-4 h-4 text-[#D6AD60]" />
               ) : (
                 <VolumeX className="w-4 h-4" />
               )}
@@ -142,10 +142,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => setLangMenuOpen(!langMenuOpen)}
-                className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-stone-800 bg-stone-900/80 text-xs text-stone-200 hover:border-[#D6AD60]/50 transition-colors"
+                className="flex items-center gap-1 px-2 sm:px-2.5 py-1.5 rounded-lg border border-stone-800 bg-stone-900/80 text-xs text-stone-200 hover:border-[#D6AD60]/50 transition-colors"
               >
-                <Globe className="w-3.5 h-3.5 text-[#D6AD60]" />
-                <span className="font-semibold">{currentLangObj.code.toUpperCase()}</span>
+                <Globe className="w-3.5 h-3.5 text-[#D6AD60] shrink-0" />
+                <span className="font-semibold text-[11px] sm:text-xs">{currentLangObj.code.toUpperCase()}</span>
                 <ChevronDown className="w-3 h-3 text-stone-400" />
               </button>
 
@@ -178,8 +178,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Currency Switcher */}
-            <div className="hidden md:flex items-center rounded-lg border border-stone-800 bg-stone-900/80 p-0.5 text-xs font-medium">
+            {/* Currency Switcher (Desktop) */}
+            <div className="hidden lg:flex items-center rounded-lg border border-stone-800 bg-stone-900/80 p-0.5 text-xs font-medium">
               {(['USD', 'EUR', 'GBP', 'EGP'] as Currency[]).map((curr) => (
                 <button
                   key={curr}
@@ -195,11 +195,11 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
 
-            {/* My Bookings link */}
+            {/* My Bookings link (Desktop) */}
             <button
               onClick={onOpenMyBookings}
               title={t.nav.myBookings}
-              className="hidden lg:flex items-center gap-1 text-xs text-stone-300 hover:text-[#D6AD60] p-1.5 transition-colors"
+              className="hidden xl:flex items-center gap-1 text-xs text-stone-300 hover:text-[#D6AD60] p-1.5 transition-colors"
             >
               <UserCheck className="w-3.5 h-3.5 text-[#D6AD60]" />
               <span className="whitespace-nowrap">{t.nav.myBookings}</span>
@@ -216,70 +216,111 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 text-stone-300 hover:text-white"
+              className="xl:hidden p-2 rounded-lg text-stone-200 hover:text-white hover:bg-white/5 transition-colors border border-stone-800"
               aria-label="Open navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#D6AD60]" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown */}
+        {/* Mobile Luxury Drawer Panel */}
         {mobileMenuOpen && (
-          <div className="xl:hidden mt-4 pt-4 border-t border-stone-800/80 pb-3 flex flex-col gap-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-stone-300 hover:text-[#D6AD60] py-2 text-base font-medium px-2 rounded-md hover:bg-stone-900/50"
-              >
-                {link.label}
-              </a>
-            ))}
-
-            {/* Luxor Points in Mobile Menu */}
-            <div className="pt-2 px-2 border-t border-stone-800/80">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenLoyalty();
-                }}
-                className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-[#D6AD60]/20 to-[#181715] border border-[#D6AD60]/40 text-[#D6AD60] text-xs font-semibold flex items-center justify-between hover:bg-[#D6AD60]/30 transition-colors"
-              >
-                <div className="flex items-center gap-2">
-                  <Crown className="w-4 h-4 text-[#D6AD60]" />
-                  <span className="font-cinzel font-bold">Luxor Points Club ({tier})</span>
-                </div>
-                <span className="bg-[#D6AD60] text-stone-950 px-2 py-0.5 rounded font-bold text-[11px]">
-                  {points.toLocaleString()} PTS
-                </span>
-              </button>
+          <div className="xl:hidden mt-3 p-4 bg-[#0A131F]/95 backdrop-blur-2xl border border-[#D6AD60]/40 rounded-2xl shadow-2xl flex flex-col gap-4 text-start animate-in fade-in slide-in-from-top-2 duration-200">
+            {/* Currency Switcher in Mobile Drawer */}
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] mb-1.5">
+                Currency / العملة
+              </div>
+              <div className="grid grid-cols-4 gap-1.5 bg-[#050B12] p-1 rounded-xl border border-stone-800">
+                {(['USD', 'EUR', 'GBP', 'EGP'] as Currency[]).map((curr) => (
+                  <button
+                    key={curr}
+                    onClick={() => onCurrencyChange(curr)}
+                    className={`py-1.5 text-xs font-semibold rounded-lg text-center transition-all ${
+                      currentCurrency === curr
+                        ? 'bg-[#D6AD60] text-stone-950 font-bold shadow'
+                        : 'text-stone-300 hover:text-white hover:bg-stone-800'
+                    }`}
+                  >
+                    {curr}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Voice Command Button in Mobile Menu */}
-            <div className="px-2">
+            {/* Quick Feature Grid in Mobile Menu */}
+            <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenVoiceSearch();
                 }}
-                className="w-full py-2 px-3 rounded-lg bg-[#D6AD60]/15 border border-[#D6AD60]/40 text-[#D6AD60] text-xs font-semibold flex items-center justify-center gap-2 hover:bg-[#D6AD60]/25 transition-colors"
+                className="p-2.5 rounded-xl bg-stone-900/90 border border-[#D6AD60]/30 text-stone-200 hover:border-[#D6AD60] text-xs font-medium flex items-center gap-2 transition-colors text-start"
               >
-                <Mic className="w-4 h-4 animate-pulse text-[#D6AD60]" />
-                <span>Voice Search Command</span>
+                <Mic className="w-4 h-4 text-[#D6AD60] shrink-0" />
+                <span>Voice Search</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenNefertari();
+                }}
+                className="p-2.5 rounded-xl bg-stone-900/90 border border-[#D6AD60]/30 text-stone-200 hover:border-[#D6AD60] text-xs font-medium flex items-center gap-2 transition-colors text-start"
+              >
+                <Sparkles className="w-4 h-4 text-[#D6AD60] shrink-0" />
+                <span>Nefertari AI</span>
+              </button>
+
+              <button
+                onClick={handleToggleAudio}
+                className="p-2.5 rounded-xl bg-stone-900/90 border border-stone-800 hover:border-[#D6AD60]/40 text-stone-200 text-xs font-medium flex items-center gap-2 transition-colors text-start"
+              >
+                {audioActive ? (
+                  <Volume2 className="w-4 h-4 text-[#D6AD60] shrink-0" />
+                ) : (
+                  <VolumeX className="w-4 h-4 text-stone-400 shrink-0" />
+                )}
+                <span>{audioActive ? 'Desert Sound On' : 'Desert Sound Muted'}</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenLoyalty();
+                }}
+                className="p-2.5 rounded-xl bg-stone-900/90 border border-[#D6AD60]/40 text-[#D6AD60] text-xs font-medium flex items-center gap-2 transition-colors text-start"
+              >
+                <Crown className="w-4 h-4 shrink-0" />
+                <span className="font-cinzel font-bold">{tier} · {points.toLocaleString()} PTS</span>
               </button>
             </div>
 
-            <div className="flex items-center justify-between pt-2 px-2 border-t border-stone-800/80">
+            {/* Navigation Links */}
+            <div className="border-t border-stone-800/80 pt-2 flex flex-col divide-y divide-stone-800/50">
+              {navLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-stone-300 hover:text-[#D6AD60] py-2.5 text-sm font-medium px-2 rounded-lg hover:bg-white/5 transition-colors"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            {/* Footer Utilities in Mobile Drawer */}
+            <div className="flex items-center justify-between pt-2 border-t border-stone-800/80 text-xs text-stone-400 px-1">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenMyBookings();
                 }}
-                className="text-xs text-stone-300 hover:text-[#D6AD60] flex items-center gap-1.5"
+                className="hover:text-[#D6AD60] flex items-center gap-1.5 transition-colors"
               >
-                <UserCheck className="w-4 h-4 text-[#D6AD60]" />
+                <UserCheck className="w-3.5 h-3.5 text-[#D6AD60]" />
                 <span>{t.nav.myBookings}</span>
               </button>
 
@@ -288,24 +329,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                   setMobileMenuOpen(false);
                   onOpenAdmin();
                 }}
-                className="text-xs text-stone-300 hover:text-white flex items-center gap-1.5"
+                className="hover:text-white flex items-center gap-1.5 transition-colors"
               >
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                 <span>{t.nav.adminDashboard}</span>
               </button>
             </div>
 
-            <div className="pt-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenBookingModal();
-                }}
-                className="w-full py-2.5 text-xs font-bold uppercase tracking-wider text-stone-950 bg-[#D6AD60] rounded-lg"
-              >
-                {t.nav.bookNow}
-              </button>
-            </div>
+            {/* Full-width VIP Book Now Button */}
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBookingModal();
+              }}
+              className="w-full py-3 text-xs font-bold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-[#D6AD60] via-[#E8C576] to-[#E9D8B5] rounded-xl shadow-lg shadow-[#D6AD60]/20 active:scale-95 transition-all text-center"
+            >
+              {t.nav.bookNow}
+            </button>
           </div>
         )}
       </div>

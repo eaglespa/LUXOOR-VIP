@@ -54,10 +54,23 @@ export const TransportSection: React.FC<TransportSectionProps> = ({
           >
             <div>
               {/* Visual header */}
-              <div className="relative">
-                <VipFleetVisual className="h-56" />
-                <div className="absolute top-4 start-4 bg-stone-950/90 border border-stone-700 text-stone-200 text-xs font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5">
-                  <Zap className="w-3 h-3 text-[#D4AF37]" />
+              <div className="relative overflow-hidden h-56 bg-stone-900">
+                {item.imageUrl ? (
+                  <div className="w-full h-full relative overflow-hidden">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.photoAlt || item.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.92] contrast-[1.05]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#142334] via-[#142334]/30 to-transparent pointer-events-none" />
+                  </div>
+                ) : (
+                  <VipFleetVisual className="h-56" />
+                )}
+                <div className="absolute top-4 start-4 bg-stone-950/90 border border-[#D6AD60]/40 text-[#E9D8B5] text-xs font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow-md backdrop-blur-md z-10">
+                  <Zap className="w-3 h-3 text-[#D6AD60]" />
                   <span>{item.vehicleType}</span>
                 </div>
 

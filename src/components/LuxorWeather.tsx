@@ -802,7 +802,7 @@ export const LuxorWeather: React.FC<LuxorWeatherProps> = ({
         <div className="px-5 py-4 sm:px-7 sm:py-5 border-b border-stone-800/80 bg-[#090f18] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <Sun className="w-3.5 h-3.5 text-[#D6AD60]" />
               <span className="text-[11px] font-bold tracking-widest uppercase text-[#D6AD60]">
                 {loc.liveLabel}
               </span>

@@ -197,6 +197,8 @@ export const FLATS_DATA: FlatItem[] = [
     distanceToNile: 'Direct Riverfront (0 meters)',
     rating: 4.98,
     reviewCount: 88,
+    imageUrl: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Luxury private Nilefront villa with turquoise infinity pool overlooking Luxor temples',
   },
   {
     id: 'karnak-vista-penthouse',
@@ -222,6 +224,8 @@ export const FLATS_DATA: FlatItem[] = [
     distanceToNile: '50 meters to Corniche Promenade',
     rating: 4.96,
     reviewCount: 104,
+    imageUrl: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Sophisticated penthouse terrace with sun lounger overlooking River Nile and Corniche',
   },
   {
     id: 'medinet-habu-riad',
@@ -247,6 +251,8 @@ export const FLATS_DATA: FlatItem[] = [
     distanceToNile: '400 meters to ferry crossing',
     rating: 4.94,
     reviewCount: 72,
+    imageUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Earth-vaulted dome villa with shaded stone courtyard and lush pomegranate trees',
   },
   {
     id: 'nefertari-suite-residence',
@@ -272,6 +278,8 @@ export const FLATS_DATA: FlatItem[] = [
     distanceToNile: 'Direct waterfront promenade',
     rating: 4.92,
     reviewCount: 65,
+    imageUrl: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Sunlit modern 2-bedroom executive apartment with sweeping panoramic Nile river balcony',
   },
 ];
 
@@ -294,6 +302,8 @@ export const TRANSPORT_DATA: TransportItem[] = [
     ],
     description:
       'Effortless arrival into ancient Luxor. Skip long taxi queues and airport hassles with our prompt curbside luxury chauffeur service.',
+    imageUrl: 'https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Executive black Mercedes-Benz sedan for luxury Luxor airport transfers',
   },
   {
     id: 'executive-vclass-daily',
@@ -313,6 +323,8 @@ export const TRANSPORT_DATA: TransportItem[] = [
     ],
     description:
       'The ultimate in convenience and flexibility. Your private luxury minivan and chauffeur wait at every monument while you explore at your own pace.',
+    imageUrl: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Spacious Mercedes-Benz V-Class VIP minivan with executive leather lounge seating',
   },
   {
     id: 'nile-private-speedboat',
@@ -332,6 +344,8 @@ export const TRANSPORT_DATA: TransportItem[] = [
     ],
     description:
       'The most scenic and rapid way to navigate Luxor. Seamlessly travel between your hotel, West Bank villas, and riverfront monuments across the pristine Nile waters.',
+    imageUrl: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Private mahogany wooden speedboat cruising on the turquoise waters of the Nile',
   },
   {
     id: 'desert-quad-safari',
@@ -350,6 +364,8 @@ export const TRANSPORT_DATA: TransportItem[] = [
     ],
     description:
       'Feel the desert breeze and rugged golden sands behind the ancient Theban mountains on an exclusive private quad expedition.',
+    imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Golden sand dunes in the Theban desert during a private VIP quad adventure',
   },
 ];
 

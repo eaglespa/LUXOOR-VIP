@@ -44,6 +44,8 @@ export interface FlatItem {
   distanceToNile: string;
   rating: number;
   reviewCount: number;
+  imageUrl?: string;
+  photoAlt?: string;
 }
 
 export interface TransportItem {
@@ -57,6 +59,8 @@ export interface TransportItem {
   priceUSD: number;
   features: string[];
   description: string;
+  imageUrl?: string;
+  photoAlt?: string;
 }
 
 export interface BookingDetails {

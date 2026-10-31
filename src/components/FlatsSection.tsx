@@ -101,10 +101,23 @@ export const FlatsSection: React.FC<FlatsSectionProps> = ({
           >
             <div>
               {/* Visual Presentation */}
-              <div className="relative">
-                <LuxuryVillaVisual className="h-64" />
+              <div className="relative overflow-hidden h-64 bg-stone-900">
+                {flat.imageUrl ? (
+                  <div className="w-full h-full relative overflow-hidden">
+                    <img
+                      src={flat.imageUrl}
+                      alt={flat.photoAlt || flat.name}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.92] contrast-[1.05]"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#142334] via-[#142334]/30 to-transparent pointer-events-none" />
+                  </div>
+                ) : (
+                  <LuxuryVillaVisual className="h-64" />
+                )}
                 {flat.featured && (
-                  <div className="absolute top-4 start-4 bg-stone-950/90 border border-[#D4AF37]/40 text-[#D4AF37] text-[11px] font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1">
+                  <div className="absolute top-4 start-4 bg-stone-950/90 border border-[#D4AF37]/40 text-[#D4AF37] text-[11px] font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1 shadow-md z-10 backdrop-blur-md">
                     <Sparkles className="w-3 h-3 text-[#D4AF37]" />
                     <span>Prime Nilefront</span>
                   </div>
@@ -122,7 +135,7 @@ export const FlatsSection: React.FC<FlatsSectionProps> = ({
                   <span>Photos</span>
                 </button>
 
-                <div className="absolute bottom-4 end-4 bg-stone-950/85 backdrop-blur-md px-3 py-1 rounded-md text-xs font-semibold text-white flex items-center gap-1.5 border border-stone-700">
+                <div className="absolute bottom-4 end-4 bg-stone-950/85 backdrop-blur-md px-3 py-1 rounded-md text-xs font-semibold text-white flex items-center gap-1.5 border border-stone-700 shadow-md z-10">
                   <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
                   <span>{flat.rating.toFixed(2)}</span>
                   <span className="text-stone-400">({flat.reviewCount})</span>
