@@ -60,10 +60,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-[0_12px_40px_rgba(0,0,0,0.85),0_1px_3px_rgba(214,173,96,0.2)] ${
         isScrolled
-          ? 'bg-[#101D2B]/95 backdrop-blur-md border-b border-[#D6AD60]/20 py-3 shadow-xl'
-          : 'bg-gradient-to-b from-[#101D2B]/90 to-transparent py-5'
+          ? 'bg-[#0B131E]/98 backdrop-blur-xl border-b border-[#D6AD60]/30 py-3'
+          : 'bg-[#0B131E]/90 backdrop-blur-lg border-b border-[#D6AD60]/20 py-4 sm:py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,53 +89,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </nav>
 
-          {/* Zone 3: Actions + Language + Currency + Concierge Trigger */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-            {/* Luxor Points Royal Club Status Button */}
-            <button
-              onClick={onOpenLoyalty}
-              className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg border border-[#D6AD60]/60 bg-gradient-to-r from-[#D6AD60]/20 via-[#D6AD60]/10 to-[#181715]/80 hover:bg-[#D6AD60]/30 text-[#D6AD60] text-xs font-semibold transition-all group shadow-sm active:scale-95"
-              title="Luxor Points Royal Club — View digital card, tiers & rewards"
-            >
-              <Crown className="w-3.5 h-3.5 text-[#D6AD60] group-hover:scale-110 transition-transform shrink-0" />
-              <span className="font-cinzel tracking-wider text-[11px] font-bold">
-                {points.toLocaleString()} <span className="font-normal text-[10px] hidden xs:inline">PTS</span>
-              </span>
-            </button>
-
-            {/* Voice-Activated Search Command Button (Desktop & Tablet) */}
-            <button
-              onClick={onOpenVoiceSearch}
-              className="hidden md:flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-[#D6AD60]/50 bg-[#D6AD60]/10 hover:bg-[#D6AD60]/25 text-[#D6AD60] text-xs font-semibold transition-all group shadow-sm active:scale-95"
-              title="Voice Commands: Say 'Book a balloon ride', 'Show villas in West Bank'"
-            >
-              <Mic className="w-3.5 h-3.5 text-[#D6AD60] group-hover:scale-110 transition-transform" />
-              <span className="font-cinzel tracking-wider text-[11px]">Voice Search</span>
-            </button>
-
-            {/* Nefertari AI Voice Trigger (Desktop & Tablet) */}
-            <button
-              onClick={onOpenNefertari}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#D6AD60]/40 bg-[#181715]/80 hover:bg-[#D6AD60]/20 text-[#D6AD60] text-xs font-semibold transition-all group"
-              title="Speak to Nefertari AI Concierge"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-[#D6AD60]" />
-              <span>Nefertari AI</span>
-            </button>
-
-            {/* Ambient Sound Atmosphere toggle (Desktop & Tablet) */}
-            <button
-              onClick={handleToggleAudio}
-              title={audioActive ? t.nav.soundActive : t.nav.soundMute}
-              className="hidden md:flex p-2 rounded-lg border border-stone-800 bg-stone-900/60 text-stone-400 hover:text-[#D6AD60] hover:border-[#D6AD60]/40 transition-colors"
-              aria-label="Toggle ambient desert audio"
-            >
-              {audioActive ? (
-                <Volume2 className="w-4 h-4 text-[#D6AD60]" />
-              ) : (
-                <VolumeX className="w-4 h-4" />
-              )}
-            </button>
+          {/* Zone 3: Language Selector + Primary Action CTA */}
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
 
             {/* 8-Language Selector Dropdown */}
             <div className="relative">
@@ -178,32 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
-            {/* Currency Switcher (Desktop) */}
-            <div className="hidden lg:flex items-center rounded-lg border border-stone-800 bg-stone-900/80 p-0.5 text-xs font-medium">
-              {(['USD', 'EUR', 'GBP', 'EGP'] as Currency[]).map((curr) => (
-                <button
-                  key={curr}
-                  onClick={() => onCurrencyChange(curr)}
-                  className={`px-2 py-1 rounded transition-colors whitespace-nowrap ${
-                    currentCurrency === curr
-                      ? 'bg-[#D6AD60] text-stone-950 font-bold shadow-sm'
-                      : 'text-stone-400 hover:text-white'
-                  }`}
-                >
-                  {curr}
-                </button>
-              ))}
-            </div>
 
-            {/* My Bookings link (Desktop) */}
-            <button
-              onClick={onOpenMyBookings}
-              title={t.nav.myBookings}
-              className="hidden xl:flex items-center gap-1 text-xs text-stone-300 hover:text-[#D6AD60] p-1.5 transition-colors"
-            >
-              <UserCheck className="w-3.5 h-3.5 text-[#D6AD60]" />
-              <span className="whitespace-nowrap">{t.nav.myBookings}</span>
-            </button>
 
             {/* Primary CTA */}
             <button
