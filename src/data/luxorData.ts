@@ -45,6 +45,8 @@ export const TOURS_DATA: TourItem[] = [
     bank: 'West Bank',
     rating: 4.98,
     reviewCount: 342,
+    imageUrl: 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Hot air balloon soaring over the Valley of the Kings and Theban mountains at sunrise',
   },
   {
     id: 'tombs-nefertari-kings',
@@ -74,6 +76,8 @@ export const TOURS_DATA: TourItem[] = [
     bank: 'West Bank',
     rating: 4.99,
     reviewCount: 289,
+    imageUrl: 'https://images.unsplash.com/photo-1544885935-98dd03b09034?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Vivid wall art in the Tomb of Queen Nefertari and Mortuary Temple of Queen Hatshepsut',
   },
   {
     id: 'karnak-luxor-night-illumination',
@@ -102,6 +106,8 @@ export const TOURS_DATA: TourItem[] = [
     bank: 'East Bank',
     rating: 4.95,
     reviewCount: 215,
+    imageUrl: 'https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Colossal illuminated columns of the Great Hypostyle Hall at Karnak Temple Complex',
   },
   {
     id: 'nile-dahabiya-sunset',
@@ -131,6 +137,8 @@ export const TOURS_DATA: TourItem[] = [
     bank: 'River Nile',
     rating: 4.97,
     reviewCount: 178,
+    imageUrl: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Handcrafted Egyptian sailboat drifting on the tranquil waters of the Nile at golden hour',
   },
   {
     id: 'dendera-abydos-day-expedition',
@@ -159,6 +167,8 @@ export const TOURS_DATA: TourItem[] = [
     bank: 'Excursion',
     rating: 4.96,
     reviewCount: 142,
+    imageUrl: 'https://images.unsplash.com/photo-1590059296655-2ff3253b2f56?auto=format&fit=crop&w=1200&q=85',
+    photoAlt: 'Sanctuary of Hathor with intact astronomical ceiling at Dendera Complex',
   },
 ];
 

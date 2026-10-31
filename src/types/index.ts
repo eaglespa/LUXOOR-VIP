@@ -24,6 +24,8 @@ export interface TourItem {
   rating: number;
   reviewCount: number;
   badge?: string;
+  imageUrl?: string;
+  photoAlt?: string;
 }
 
 export interface FlatItem {

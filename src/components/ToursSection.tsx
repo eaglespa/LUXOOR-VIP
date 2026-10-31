@@ -103,11 +103,24 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
               className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                {/* Visual Artwork Header */}
-                <div className="relative">
-                  {renderVisual(tour.id)}
+                {/* Visual Artwork / Genuine Photo Header */}
+                <div className="relative overflow-hidden h-56 bg-stone-900">
+                  {tour.imageUrl ? (
+                    <div className="w-full h-full relative overflow-hidden">
+                      <img
+                        src={tour.imageUrl}
+                        alt={tour.photoAlt || tour.title}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.92] contrast-[1.05]"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#142334] via-[#142334]/30 to-transparent pointer-events-none" />
+                    </div>
+                  ) : (
+                    renderVisual(tour.id)
+                  )}
+
                   {tour.badge && (
-                    <div className="absolute top-3 start-3 bg-[#0A0B0E]/85 backdrop-blur-md border border-[#D4AF37]/40 text-[#D4AF37] text-[11px] font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1 shadow">
+                    <div className="absolute top-3 start-3 bg-[#0A0B0E]/85 backdrop-blur-md border border-[#D4AF37]/40 text-[#D4AF37] text-[11px] font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1 shadow z-10">
                       <Sparkles className="w-3 h-3 text-[#D4AF37]" />
                       <span>{tour.badge}</span>
                     </div>
