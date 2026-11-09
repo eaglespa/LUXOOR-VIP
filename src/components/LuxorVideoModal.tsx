@@ -119,7 +119,7 @@ export const LuxorVideoModal: React.FC<LuxorVideoModalProps> = ({
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-cinzel text-sm sm:text-base font-bold text-white tracking-wider">
-                    GO VOYAGE 4K CINEMATIC LUXOR
+                    GO VOYAGO 4K CINEMATIC LUXOR
                   </h3>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#D6AD60]/20 text-[#D6AD60] border border-[#D6AD60]/30 uppercase font-mono">
                     Ultra HD
@@ -178,7 +178,7 @@ export const LuxorVideoModal: React.FC<LuxorVideoModalProps> = ({
             {/* In-Video Watermark Tag */}
             <div className="absolute top-3 left-3 pointer-events-none px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-cinzel text-amber-200 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-              <span>GO VOYAGE Cinema</span>
+              <span>GO VOYAGO Cinema</span>
             </div>
           </div>
 
@@ -267,7 +267,7 @@ export const LuxorVideoModal: React.FC<LuxorVideoModalProps> = ({
                 <ShieldCheck className="w-3.5 h-3.5" />
                 <span>Private Egyptologist Guided Access Included with All Tours</span>
               </div>
-              <span className="text-[#D6AD60] font-cinzel">GO VOYAGE LUXOR</span>
+              <span className="text-[#D6AD60] font-cinzel">GO VOYAGO LUXOR</span>
             </div>
           </div>
         </motion.div>

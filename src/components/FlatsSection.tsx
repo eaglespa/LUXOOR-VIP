@@ -5,6 +5,7 @@ import { Bed, Bath, Users, Eye, Waves, Star, CheckCircle, Sparkles, Camera } fro
 import { motion } from 'motion/react';
 import { LuxuryVillaVisual } from './visuals/LuxorVisuals';
 import { useI18n } from '../i18n/I18nContext';
+import { FlatCardSkeleton } from './common/SkeletonCards';
 
 interface FlatsSectionProps {
   currentCurrency: Currency;
@@ -12,6 +13,7 @@ interface FlatsSectionProps {
   bankFilter?: 'all' | 'west' | 'east';
   onBankFilterChange?: (filter: 'all' | 'west' | 'east') => void;
   onOpenGallery?: (flat: FlatItem, category: ServiceCategory) => void;
+  isLoading?: boolean;
 }
 
 export const FlatsSection: React.FC<FlatsSectionProps> = ({
@@ -20,15 +22,22 @@ export const FlatsSection: React.FC<FlatsSectionProps> = ({
   bankFilter: externalBankFilter,
   onBankFilterChange,
   onOpenGallery,
+  isLoading = false,
 }) => {
   const { t } = useI18n();
   const [internalBankFilter, setInternalBankFilter] = useState<'all' | 'west' | 'east'>('all');
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 
   const activeBankFilter = externalBankFilter !== undefined ? externalBankFilter : internalBankFilter;
 
   const handleFilterChange = (val: 'all' | 'west' | 'east') => {
+    if (val === activeBankFilter) return;
+    setIsTransitioning(true);
     setInternalBankFilter(val);
     onBankFilterChange?.(val);
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 320);
   };
 
   const filteredFlats = FLATS_DATA.filter((flat) => {
@@ -94,17 +103,23 @@ export const FlatsSection: React.FC<FlatsSectionProps> = ({
         </div>
       </motion.div>
 
-      {/* Flats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {filteredFlats.map((flat, idx) => (
-          <motion.div
-            key={flat.id}
-            initial={{ opacity: 0, y: 38 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.75, delay: idx * 0.14, ease: [0.16, 1, 0.3, 1] as const }}
-            className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
-          >
+      {/* Flats Grid with Skeleton Loading State */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 min-h-[500px]">
+        {isLoading || isTransitioning ? (
+          <>
+            <FlatCardSkeleton />
+            <FlatCardSkeleton />
+          </>
+        ) : (
+          filteredFlats.map((flat, idx) => (
+            <motion.div
+              key={flat.id}
+              initial={{ opacity: 0, y: 38 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.75, delay: idx * 0.14, ease: [0.16, 1, 0.3, 1] as const }}
+              className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
+            >
             <div>
               {/* Visual Presentation */}
               <div className="relative overflow-hidden h-64 bg-stone-900">
@@ -221,7 +236,8 @@ export const FlatsSection: React.FC<FlatsSectionProps> = ({
               </button>
             </div>
           </motion.div>
-        ))}
+        ))
+      )}
       </div>
     </section>
   );

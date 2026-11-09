@@ -5,17 +5,20 @@ import { Users, Briefcase, Check, Shield, Zap, Camera } from 'lucide-react';
 import { motion } from 'motion/react';
 import { VipFleetVisual } from './visuals/LuxorVisuals';
 import { useI18n } from '../i18n/I18nContext';
+import { TransportCardSkeleton } from './common/SkeletonCards';
 
 interface TransportSectionProps {
   currentCurrency: Currency;
   onBookTransport: (item: TransportItem) => void;
   onOpenGallery?: (item: TransportItem, category: ServiceCategory) => void;
+  isLoading?: boolean;
 }
 
 export const TransportSection: React.FC<TransportSectionProps> = ({
   currentCurrency,
   onBookTransport,
   onOpenGallery,
+  isLoading = false,
 }) => {
   const { t } = useI18n();
 
@@ -47,17 +50,23 @@ export const TransportSection: React.FC<TransportSectionProps> = ({
         </div>
       </motion.div>
 
-      {/* Transport Fleet Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {TRANSPORT_DATA.map((item, idx) => (
-          <motion.div
-            key={item.id}
-            initial={{ opacity: 0, y: 38 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 0.75, delay: idx * 0.14, ease: [0.16, 1, 0.3, 1] as const }}
-            className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
-          >
+      {/* Transport Fleet Grid with Skeleton Loading State */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 min-h-[480px]">
+        {isLoading ? (
+          <>
+            <TransportCardSkeleton />
+            <TransportCardSkeleton />
+          </>
+        ) : (
+          TRANSPORT_DATA.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 38 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.75, delay: idx * 0.14, ease: [0.16, 1, 0.3, 1] as const }}
+              className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
+            >
             <div>
               {/* Visual header */}
               <div className="relative overflow-hidden h-56 bg-stone-900">
@@ -152,7 +161,8 @@ export const TransportSection: React.FC<TransportSectionProps> = ({
               </button>
             </div>
           </motion.div>
-        ))}
+        ))
+      )}
       </div>
     </section>
   );

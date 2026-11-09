@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Currency, ServiceCategory } from '../types';
 import { formatPrice } from '../data/luxorData';
 import {
@@ -15,6 +15,8 @@ import {
   Mic,
   Crown,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Play,
   Pause,
   Film,
@@ -22,6 +24,8 @@ import {
   VolumeX,
   RotateCcw,
   Layers,
+  MapPin,
+  Camera,
 } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'motion/react';
 import { useI18n } from '../i18n/I18nContext';
@@ -34,29 +38,73 @@ interface VideoScene {
   location: string;
   embedId: string;
   poster: string;
+  caption?: string;
 }
 
 const VIDEO_SCENES: VideoScene[] = [
   {
-    id: 'balloons',
-    label: 'Sunrise Hot Air Balloons',
-    location: 'Valley of the Kings & West Bank',
-    embedId: '5a2xW3xK8-s',
-    poster: 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=2000&q=85',
-  },
-  {
-    id: 'karnak',
-    label: 'Karnak Hypostyle & Temples',
+    id: 'luxor-temple',
+    label: 'Luxor Temple at Twilight',
     location: 'East Bank & Avenue of Sphinxes',
     embedId: 'v1p_6kQ6_f0',
-    poster: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=2000&q=85',
+    poster: 'https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=2560&q=90',
+    caption: 'Amenhotep III Colonnade & illuminated statues at dusk',
   },
   {
-    id: 'nile',
+    id: 'balloons-sunrise',
+    label: 'Sunrise Hot Air Balloon Odyssey',
+    location: 'Valley of the Kings & West Bank',
+    embedId: '5a2xW3xK8-s',
+    poster: 'https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=2560&q=90',
+    caption: 'Balloons drifting 2,500 ft above the Theban Necropolis at dawn',
+  },
+  {
+    id: 'karnak-hypostyle',
+    label: 'Karnak Great Hypostyle Hall',
+    location: 'Precinct of Amun-Ra • Karnak',
+    embedId: 'v1p_6kQ6_f0',
+    poster: '/assets/aistudio/karnak__4__3800028d.jpg',
+    caption: '134 monumental sandstone columns reaching into the sky',
+  },
+  {
+    id: 'nefertari-tomb',
+    label: 'Queen Nefertari VIP Sanctuary (QV66)',
+    location: 'Valley of the Queens • West Bank',
+    embedId: '5a2xW3xK8-s',
+    poster: '/assets/aistudio/VALLY_KINGS__5__1638f2a3.jpg',
+    caption: 'Supernatural 3,200-year-old lapis lazuli & gold wall murals',
+  },
+  {
+    id: 'karnak-sphinxes',
+    label: 'Avenue of the Criosphinxes',
+    location: 'Karnak First Pylon Courtyard',
+    embedId: 'v1p_6kQ6_f0',
+    poster: '/assets/aistudio/karnak__1__4e230a56.jpg',
+    caption: 'Sacred ram-headed guardian sphinxes under twilight skies',
+  },
+  {
+    id: 'balloons-colossi',
+    label: 'Colossi of Memnon Dawn Vista',
+    location: 'West Bank Theban Plain',
+    embedId: '5a2xW3xK8-s',
+    poster: '/assets/aistudio/luxballon__1__6ee8334e.jpg',
+    caption: 'Ancient 3,400-year-old royal colossi and desert mountain range',
+  },
+  {
+    id: 'nile-sunset',
     label: 'Sacred Nile Sunset Waters',
     location: 'River Nile & Theban Horizons',
     embedId: 'vjXh2C4784M',
-    poster: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=2000&q=85',
+    poster: 'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=2560&q=90',
+    caption: 'Traditional Egyptian felucca sailing in the golden hour breeze',
+  },
+  {
+    id: 'karnak-colossi',
+    label: 'Colossal Ramses II & Lotus Columns',
+    location: 'Luxor Temple Sanctuary',
+    embedId: 'v1p_6kQ6_f0',
+    poster: '/assets/aistudio/karnak__2__4abd38d1.jpg',
+    caption: 'Standing before monumental pharaonic statues and towering columns',
   },
 ];
 
@@ -146,12 +194,44 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [guests, setGuests] = useState(2);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [currentSceneIndex, setCurrentSceneIndex] = useState(0);
-  const [isAmbientPlaying, setIsAmbientPlaying] = useState(true);
+  const [isAmbientPlaying, setIsAmbientPlaying] = useState(false);
   const [isAudioActive, setIsAudioActive] = useState(false);
   const [showSceneSelector, setShowSceneSelector] = useState(false);
+  const [isSlideshowPlaying, setIsSlideshowPlaying] = useState(true);
+  const [slideProgress, setSlideProgress] = useState(0);
   const [entranceKey, setEntranceKey] = useState(0);
 
   const activeScene = VIDEO_SCENES[currentSceneIndex];
+
+  // Preload all hero images on mount so transitions are instant and butter-smooth
+  useEffect(() => {
+    VIDEO_SCENES.forEach((scene) => {
+      const img = new Image();
+      img.src = scene.poster;
+    });
+  }, []);
+
+  // Auto-advance slideshow with real-time progress indicator every 4.5 seconds
+  useEffect(() => {
+    if (!isSlideshowPlaying || isAmbientPlaying) return;
+
+    const DURATION = 4500;
+    const STEP = 50;
+    let elapsed = 0;
+
+    const timer = setInterval(() => {
+      elapsed += STEP;
+      setSlideProgress(Math.min((elapsed / DURATION) * 100, 100));
+
+      if (elapsed >= DURATION) {
+        setCurrentSceneIndex((prev) => (prev + 1) % VIDEO_SCENES.length);
+        elapsed = 0;
+        setSlideProgress(0);
+      }
+    }, STEP);
+
+    return () => clearInterval(timer);
+  }, [isSlideshowPlaying, isAmbientPlaying, currentSceneIndex]);
 
   // Replay Hero Entrance Animation
   const handleReplayEntrance = () => {
@@ -169,8 +249,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
   const handleSelectScene = (index: number) => {
     setCurrentSceneIndex(index);
+    setSlideProgress(0);
     setShowSceneSelector(false);
-    setIsAmbientPlaying(true);
+  };
+
+  const handlePrevSlide = () => {
+    setCurrentSceneIndex((prev) => (prev - 1 + VIDEO_SCENES.length) % VIDEO_SCENES.length);
+    setSlideProgress(0);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSceneIndex((prev) => (prev + 1) % VIDEO_SCENES.length);
+    setSlideProgress(0);
   };
 
   const handleSearch = (e: React.FormEvent) => {
@@ -181,20 +271,31 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   return (
-    <section className="relative min-h-[96vh] flex flex-col justify-center items-center pt-28 pb-16 overflow-hidden">
+    <section className="relative isolate min-h-[96vh] flex flex-col justify-center items-center pt-28 pb-16 overflow-hidden">
       {/* =========================================================================
-          1. HIGH-QUALITY CONTINUOUS LOOPING BACKGROUND VIDEO OF LUXOR'S LANDSCAPE
+          1. HIGH-QUALITY LUXOR PHOTOGRAPHY SLIDESHOW BACKGROUND WITH CINEMATIC EFFECTS
       ========================================================================= */}
-      <div className="absolute inset-0 -z-20 overflow-hidden pointer-events-none">
-        {/* High-Resolution Landscape Poster Fallback */}
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-all duration-1000 scale-105"
-          style={{ backgroundImage: `url(${activeScene.poster})` }}
-        />
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none select-none">
+        {/* Animated Smooth Crossfade and Slow Ken Burns Zoom Effect */}
+        <AnimatePresence mode="popLayout">
+          <motion.img
+            key={activeScene.id}
+            src={activeScene.poster}
+            alt={activeScene.label}
+            initial={{ opacity: 0, scale: 1.08 }}
+            animate={{ opacity: 1, scale: 1.02 }}
+            exit={{ opacity: 0, scale: 1.0 }}
+            transition={{
+              opacity: { duration: 1.0, ease: 'easeInOut' },
+              scale: { duration: 5.5, ease: 'easeOut' },
+            }}
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+        </AnimatePresence>
 
-        {/* 4K Continuous Looping Video Stream of Luxor's Landscape */}
+        {/* 4K Continuous Looping Video Stream of Luxor's Landscape (when user triggers Video Mode) */}
         {isAmbientPlaying && (
-          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-10">
             <iframe
               key={activeScene.id}
               src={`https://www.youtube-nocookie.com/embed/${activeScene.embedId}?autoplay=1&mute=1&controls=0&loop=1&playlist=${activeScene.embedId}&playsinline=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&fs=0&modestbranding=1`}
@@ -206,10 +307,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
         )}
 
-        {/* Balanced Cinematic Gradient Scrims allowing Luxor's landscape to be vividly visible behind content */}
-        <div className="absolute inset-0 bg-[#081019]/50 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#101D2B]/85 via-[#101D2B]/30 to-[#101D2B]/95" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#101D2B]/20 to-[#070D14]/85" />
+        {/* Atmospheric Floating Golden Desert Dawn Sparkle Shimmer Particles */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{
+                y: '100%',
+                x: `${12 + i * 15}%`,
+                opacity: 0,
+                scale: 0.7,
+              }}
+              animate={{
+                y: '-20%',
+                opacity: [0, 0.45, 0],
+                scale: [0.7, 1.3, 0.8],
+              }}
+              transition={{
+                duration: 11 + i * 2.5,
+                repeat: Infinity,
+                delay: i * 1.8,
+                ease: 'easeInOut',
+              }}
+              className="absolute w-2 h-2 rounded-full bg-gradient-to-tr from-[#D6AD60] to-[#FFF6DC] blur-[1px] shadow-[0_0_10px_rgba(214,173,96,0.7)]"
+            />
+          ))}
+        </div>
+
+        {/* Balanced Cinematic Gradient Scrims allowing Luxor's photography to be vividly visible behind content */}
+        <div className="absolute inset-0 bg-[#081019]/40 mix-blend-multiply z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#101D2B]/85 via-[#101D2B]/20 to-[#101D2B]/95 z-10" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-[#101D2B]/25 to-[#070D14]/90 z-10" />
       </div>
 
       {/* Radiant golden dawn light over the Nile */}
@@ -256,7 +384,86 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* =========================================================================
-          VIDEO CONTROLS & SCENE SWITCHER BAR
+          LUXOR PHOTO LANDMARK BADGE & SLIDESHOW CONTROLS (Bottom Start)
+      ========================================================================= */}
+      <div className="absolute bottom-3 start-3 sm:bottom-5 sm:start-6 z-20 flex items-center gap-2">
+        {/* Curatorial Badge with Live Photo Counter & Landmark Title */}
+        <div className="flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-black/80 border border-[#D6AD60]/40 text-[#E9D8B5] text-xs backdrop-blur-md shadow-xl select-none">
+          <Camera className="w-3.5 h-3.5 text-[#D6AD60] shrink-0" />
+          <span className="px-1.5 py-0.5 rounded bg-[#D6AD60]/20 text-[#D6AD60] text-[10px] font-mono font-bold">
+            {String(currentSceneIndex + 1).padStart(2, '0')}/{String(VIDEO_SCENES.length).padStart(2, '0')}
+          </span>
+          <span className="font-cinzel tracking-wider text-[11px] font-semibold text-amber-200">
+            {activeScene.label}
+          </span>
+          <span className="text-stone-400 text-[10px] hidden lg:inline font-light border-s border-stone-700 ps-2">
+            {activeScene.location}
+          </span>
+        </div>
+
+        {/* Previous / Next Slideshow Buttons */}
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={handlePrevSlide}
+            className="p-1.5 rounded-full bg-black/75 hover:bg-[#D6AD60] text-stone-300 hover:text-[#101D2B] border border-[#D6AD60]/40 transition-all shadow-md active:scale-90"
+            title="Previous Luxor photo"
+            aria-label="Previous photo"
+          >
+            <ChevronLeft className="w-3.5 h-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={handleNextSlide}
+            className="p-1.5 rounded-full bg-black/75 hover:bg-[#D6AD60] text-stone-300 hover:text-[#101D2B] border border-[#D6AD60]/40 transition-all shadow-md active:scale-90"
+            title="Next Luxor photo"
+            aria-label="Next photo"
+          >
+            <ChevronRight className="w-3.5 h-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsSlideshowPlaying(!isSlideshowPlaying)}
+            className="p-1.5 rounded-full bg-black/75 hover:bg-[#D6AD60] text-stone-300 hover:text-[#101D2B] border border-[#D6AD60]/40 transition-all shadow-md active:scale-90"
+            title={isSlideshowPlaying ? 'Pause Slideshow' : 'Resume Slideshow'}
+            aria-label="Toggle slideshow autoplay"
+          >
+            {isSlideshowPlaying ? (
+              <Pause className="w-3.5 h-3.5" />
+            ) : (
+              <Play className="w-3.5 h-3.5" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* =========================================================================
+          SLIDESHOW THUMBNAIL PROGRESS TRACK (Bottom Center)
+      ========================================================================= */}
+      <div className="absolute bottom-3.5 left-1/2 -translate-x-1/2 z-20 hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#D6AD60]/30 shadow-xl">
+        {VIDEO_SCENES.map((scene, idx) => (
+          <button
+            key={scene.id}
+            type="button"
+            onClick={() => handleSelectScene(idx)}
+            className={`relative h-1.5 rounded-full transition-all duration-300 overflow-hidden ${
+              idx === currentSceneIndex ? 'w-8 bg-stone-700' : 'w-2 bg-stone-600 hover:bg-stone-400'
+            }`}
+            title={`Jump to ${scene.label}`}
+            aria-label={`Jump to photo ${idx + 1}`}
+          >
+            {idx === currentSceneIndex && (
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-[#D6AD60] to-[#FFF3D1] transition-all"
+                style={{ width: `${slideProgress}%` }}
+              />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* =========================================================================
+          SCENE SWITCHER & AMBIENT CONTROLS BAR (Bottom End)
       ========================================================================= */}
       <div className="absolute bottom-3 end-3 sm:bottom-5 sm:end-6 z-20 flex items-center gap-1.5 sm:gap-2">
         {/* Scene Selector Menu Trigger */}
@@ -265,7 +472,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             type="button"
             onClick={() => setShowSceneSelector(!showSceneSelector)}
             className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-black/70 hover:bg-black/90 border border-[#D6AD60]/50 text-stone-200 hover:text-white text-xs backdrop-blur-md transition-all group shadow-lg"
-            title="Change Ambient Video Scene"
+            title="Select Luxor Photo & Scene"
           >
             <Layers className="w-3 h-3 text-[#D6AD60] group-hover:rotate-12 transition-transform shrink-0" />
             <span className="hidden sm:inline text-[10px] font-mono tracking-wider text-[#E9D8B5]">
@@ -281,31 +488,37 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 initial={{ opacity: 0, y: 8, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                className={`absolute bottom-full mb-2 w-64 bg-[#0A131F]/95 border border-[#D6AD60]/40 rounded-2xl shadow-2xl p-2 backdrop-blur-xl z-30 ${isRTL ? 'left-0' : 'right-0'}`}
+                className={`absolute bottom-full mb-2 w-72 bg-[#0A131F]/95 border border-[#D6AD60]/40 rounded-2xl shadow-2xl p-2 backdrop-blur-xl z-30 ${isRTL ? 'left-0' : 'right-0'}`}
               >
-                <div className="text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] px-2.5 py-1 mb-1 border-b border-stone-800">
-                  Select Video Scene
+                <div className="text-[10px] font-bold uppercase tracking-wider text-[#D6AD60] px-2.5 py-1 mb-1 border-b border-stone-800 flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <Camera className="w-3 h-3 text-[#D6AD60]" />
+                    <span>Luxor Photo Gallery</span>
+                  </div>
+                  <span className="text-[9px] text-stone-400 font-mono">8 Photos</span>
                 </div>
-                {VIDEO_SCENES.map((scene, idx) => (
-                  <button
-                    key={scene.id}
-                    type="button"
-                    onClick={() => handleSelectScene(idx)}
-                    className={`w-full text-left px-2.5 py-2 rounded-xl text-xs transition-colors flex items-center justify-between ${
-                      idx === currentSceneIndex
-                        ? 'bg-[#D6AD60]/20 text-[#E9D8B5] font-semibold border border-[#D6AD60]/30'
-                        : 'text-stone-300 hover:bg-white/5 hover:text-white'
-                    }`}
-                  >
-                    <div>
-                      <div className="text-[11px] font-medium leading-tight">{scene.label}</div>
-                      <div className="text-[9px] text-stone-400 font-light">{scene.location}</div>
-                    </div>
-                    {idx === currentSceneIndex && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D6AD60]" />
-                    )}
-                  </button>
-                ))}
+                <div className="max-h-64 overflow-y-auto scrollbar-thin">
+                  {VIDEO_SCENES.map((scene, idx) => (
+                    <button
+                      key={scene.id}
+                      type="button"
+                      onClick={() => handleSelectScene(idx)}
+                      className={`w-full text-left px-2.5 py-2 rounded-xl text-xs transition-colors flex items-center justify-between ${
+                        idx === currentSceneIndex
+                          ? 'bg-[#D6AD60]/20 text-[#E9D8B5] font-semibold border border-[#D6AD60]/30'
+                          : 'text-stone-300 hover:bg-white/5 hover:text-white'
+                      }`}
+                    >
+                      <div>
+                        <div className="text-[11px] font-medium leading-tight">{scene.label}</div>
+                        <div className="text-[9px] text-stone-400 font-light">{scene.location}</div>
+                      </div>
+                      {idx === currentSceneIndex && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#D6AD60]" />
+                      )}
+                    </button>
+                  ))}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -325,22 +538,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           )}
         </button>
 
-        {/* Ambient Video Play/Pause Toggle */}
+        {/* Mode Toggle: Photo vs 4K Video */}
         <button
           type="button"
           onClick={toggleAmbientVideo}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/65 hover:bg-black/85 border border-[#D6AD60]/40 text-stone-300 hover:text-white text-xs backdrop-blur-md transition-all group shadow-md"
-          title={isAmbientPlaying ? 'Pause Ambient Nile Video' : 'Play Ambient Nile Video'}
+          title={isAmbientPlaying ? 'Switch to Photo Mode' : 'Play 4K Ambient Video'}
         >
           {isAmbientPlaying ? (
             <>
-              <Pause className="w-3 h-3 text-[#D6AD60]" />
-              <span className="text-[10px] font-mono tracking-wider text-[#E9D8B5] hidden sm:inline">PAUSE</span>
+              <Camera className="w-3 h-3 text-[#D6AD60]" />
+              <span className="text-[10px] font-mono tracking-wider text-[#E9D8B5] hidden sm:inline">PHOTO</span>
             </>
           ) : (
             <>
               <Play className="w-3 h-3 text-[#D6AD60]" />
-              <span className="text-[10px] font-mono tracking-wider text-stone-300 hidden sm:inline">PLAY</span>
+              <span className="text-[10px] font-mono tracking-wider text-stone-300 hidden sm:inline">VIDEO</span>
             </>
           )}
         </button>

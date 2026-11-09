@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPolicy, onOpenAdmin }) => 
           {/* Brand Col */}
           <div className="md:col-span-1">
             <span className="font-cinzel text-xl font-bold tracking-widest text-gold-gradient block mb-3">
-              GO VOYAGE
+              GO VOYAGO
             </span>
             <p className="text-xs text-stone-300 leading-relaxed font-light">
               {t.footer.tagline}
@@ -116,8 +116,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPolicy, onOpenAdmin }) => 
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#D6AD60] shrink-0" />
-                <a href="mailto:concierge@govoyage.vip" className="hover:text-white transition-colors">
-                  concierge@govoyage.vip
+                <a href="mailto:concierge@govoyago.vip" className="hover:text-white transition-colors">
+                  concierge@govoyago.vip
                 </a>
               </li>
             </ul>

@@ -60,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-[0_12px_40px_rgba(0,0,0,0.85),0_1px_3px_rgba(214,173,96,0.2)] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-md shadow-black/50 ${
         isScrolled
           ? 'bg-[#0B131E]/98 backdrop-blur-xl border-b border-[#D6AD60]/30 py-3'
           : 'bg-[#0B131E]/90 backdrop-blur-lg border-b border-[#D6AD60]/20 py-4 sm:py-5'
@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="/"
             className="font-cinzel text-xl sm:text-2xl font-bold tracking-widest text-gold-gradient whitespace-nowrap shrink-0 hover:opacity-90 transition-opacity"
           >
-            GO VOYAGE
+            GO VOYAGO
           </a>
 
           {/* Zone 2: 4–5 clean single-line text navigation links */}

@@ -6,11 +6,14 @@ import { motion } from 'motion/react';
 import { BalloonSunriseVisual, KarnakPillarsVisual, FeluccaSunsetVisual } from './visuals/LuxorVisuals';
 import { useI18n } from '../i18n/I18nContext';
 import { ArTemplePreviewModal } from './ArTemplePreviewModal';
+import { TourCardSkeleton } from './common/SkeletonCards';
+import { TourCardSlideshow } from './TourCardSlideshow';
 
 interface ToursSectionProps {
   currentCurrency: Currency;
   onBookTour: (tour: TourItem) => void;
   onOpenGallery?: (tour: TourItem, category: ServiceCategory) => void;
+  isLoading?: boolean;
 }
 
 const AR_LABELS: Record<string, string> = {
@@ -28,11 +31,22 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
   currentCurrency,
   onBookTour,
   onOpenGallery,
+  isLoading = false,
 }) => {
   const { t, language } = useI18n();
   const [filter, setFilter] = useState<'all' | 'balloon' | 'temples' | 'nile'>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [activeArTour, setActiveArTour] = useState<TourItem | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+
+  const handleFilterChange = (newFilter: 'all' | 'balloon' | 'temples' | 'nile') => {
+    if (newFilter === filter) return;
+    setIsTransitioning(true);
+    setFilter(newFilter);
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 320);
+  };
 
   const filteredTours = TOURS_DATA.filter((tour) => {
     if (filter === 'all') return true;
@@ -81,7 +95,7 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setFilter(tab.id as typeof filter)}
+              onClick={() => handleFilterChange(tab.id as typeof filter)}
               className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all whitespace-nowrap ${
                 filter === tab.id
                   ? 'bg-[#D4AF37] text-stone-950 shadow-sm font-bold'
@@ -94,9 +108,16 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
         </div>
       </motion.div>
 
-      {/* Tours Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredTours.map((tour, idx) => {
+      {/* Tours Grid with Skeleton Loading State */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[480px]">
+        {isLoading || isTransitioning ? (
+          <>
+            <TourCardSkeleton />
+            <TourCardSkeleton />
+            <TourCardSkeleton />
+          </>
+        ) : (
+          filteredTours.map((tour, idx) => {
           const isExpanded = expandedId === tour.id;
 
           return (
@@ -109,61 +130,15 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
               className="luxor-card-hover group bg-[#142334]/70 hover:bg-[#16273b] border border-stone-800 hover:border-[#D6AD60]/60 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between"
             >
               <div>
-                {/* Visual Artwork / Genuine Photo Header */}
-                <div className="relative overflow-hidden h-56 bg-stone-900">
-                  {tour.imageUrl ? (
-                    <div className="w-full h-full relative overflow-hidden">
-                      <img
-                        src={tour.imageUrl}
-                        alt={tour.photoAlt || tour.title}
-                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 brightness-[0.92] contrast-[1.05]"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#142334] via-[#142334]/30 to-transparent pointer-events-none" />
-                    </div>
-                  ) : (
-                    renderVisual(tour.id)
-                  )}
-
-                  {tour.badge && (
-                    <div className="absolute top-3 start-3 bg-[#0A0B0E]/85 backdrop-blur-md border border-[#D4AF37]/40 text-[#D4AF37] text-[11px] font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1 shadow z-10">
-                      <Sparkles className="w-3 h-3 text-[#D4AF37]" />
-                      <span>{tour.badge}</span>
-                    </div>
-                  )}
-
-                  {/* AR 3D View Floating Badge Button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveArTour(tour);
-                    }}
-                    className="absolute top-3 end-3 bg-[#0A0B0E]/90 hover:bg-[#D6AD60] hover:text-[#101D2B] text-[#D6AD60] border border-[#D6AD60]/60 text-[11px] font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider flex items-center gap-1.5 shadow-lg backdrop-blur-md transition-all group/ar z-10"
-                    title="View in Augmented Reality (AR)"
-                  >
-                    <Box className="w-3.5 h-3.5 text-[#D6AD60] group-hover/ar:text-[#101D2B] transition-colors" />
-                    <span>{AR_LABELS[language] || 'AR 3D View'}</span>
-                  </button>
-
-                  {/* Full-Screen Lightbox Gallery Trigger */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenGallery?.(tour, 'tours');
-                    }}
-                    className="absolute bottom-3 start-3 bg-[#0A0B0E]/85 hover:bg-[#D6AD60] hover:text-[#101D2B] text-stone-200 border border-stone-700 hover:border-[#D6AD60] text-xs font-semibold px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow backdrop-blur-md transition-all z-10"
-                    title="View full-screen high-resolution image gallery"
-                  >
-                    <Camera className="w-3.5 h-3.5 text-[#D6AD60]" />
-                    <span>Photos</span>
-                  </button>
-
-                  <div className="absolute bottom-3 end-3 bg-stone-950/85 backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-semibold text-white flex items-center gap-1 border border-stone-700">
-                    <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-                    <span>{tour.rating.toFixed(2)}</span>
-                    <span className="text-stone-400 font-normal">({tour.reviewCount})</span>
-                  </div>
-                </div>
+                {/* Visual Artwork / Genuine Photo Header with Interactive Slideshow */}
+                <TourCardSlideshow
+                  tour={tour}
+                  language={language}
+                  onOpenGallery={onOpenGallery}
+                  onOpenAr={(t) => setActiveArTour(t)}
+                  renderVisual={renderVisual}
+                  arLabel={AR_LABELS[language] || 'AR 3D View'}
+                />
 
                 {/* Card Content */}
                 <div className="p-6">
@@ -233,21 +208,32 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
                     </div>
                   )}
 
-                  {/* Toggle details link */}
-                  <button
-                    onClick={() => setExpandedId(isExpanded ? null : tour.id)}
-                    className="mt-3 text-xs text-[#D4AF37] hover:underline flex items-center gap-1 font-medium"
-                  >
-                    {isExpanded ? (
-                      <>
-                        {t.tours.lessDetails} <ChevronUp className="w-3 h-3" />
-                      </>
-                    ) : (
-                      <>
-                        {t.tours.fullInclusions} <ChevronDown className="w-3 h-3" />
-                      </>
-                    )}
-                  </button>
+                  {/* Action links: Inclusions toggle & Trip Page / Gallery */}
+                  <div className="mt-3 flex items-center justify-between gap-2 flex-wrap pt-1">
+                    <button
+                      onClick={() => setExpandedId(isExpanded ? null : tour.id)}
+                      className="text-xs text-[#D4AF37] hover:underline flex items-center gap-1 font-medium"
+                    >
+                      {isExpanded ? (
+                        <>
+                          {t.tours.lessDetails} <ChevronUp className="w-3 h-3" />
+                        </>
+                      ) : (
+                        <>
+                          {t.tours.fullInclusions} <ChevronDown className="w-3 h-3" />
+                        </>
+                      )}
+                    </button>
+
+                    <button
+                      onClick={() => onOpenGallery?.(tour, 'tours')}
+                      className="text-xs text-stone-300 hover:text-[#D6AD60] flex items-center gap-1.5 font-medium transition-colors group/link"
+                      title={tour.galleryImages ? `View full Trip Page with all ${tour.galleryImages.length} photos, timeline & inclusions` : 'View full Trip Page and gallery'}
+                    >
+                      <Camera className="w-3.5 h-3.5 text-[#D6AD60] group-hover/link:scale-110 transition-transform" />
+                      <span>{tour.galleryImages ? `Trip Page (${tour.galleryImages.length} Photos)` : 'Trip Page'}</span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -283,7 +269,7 @@ export const ToursSection: React.FC<ToursSectionProps> = ({
               </div>
             </motion.div>
           );
-        })}
+        }))}
       </div>
 
       {/* Augmented Reality Temple & Monument Preview Modal */}

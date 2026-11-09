@@ -26,6 +26,7 @@ export interface TourItem {
   badge?: string;
   imageUrl?: string;
   photoAlt?: string;
+  galleryImages?: string[];
 }
 
 export interface FlatItem {
